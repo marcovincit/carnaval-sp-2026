@@ -151,12 +151,18 @@
     .date-pill[aria-pressed="true"] .day-name,
     .date-pill[aria-pressed="true"] .day-num { color: var(--text-on-accent); }
 
+    /* Separator (top edge of panels) */
+    .has-separator::before {
+      content: ''; display: block; height: 1px;
+      background: var(--separator); margin-bottom: 6px;
+    }
+
     /* Viewport list */
     #viewport-list {
       position: fixed; left: 0; right: 0; z-index: 999;
-      overflow-x: auto; overflow-y: hidden;
+      overflow-x: auto; overflow-y: visible;
       -webkit-overflow-scrolling: touch; scrollbar-width: none;
-      white-space: nowrap; padding: var(--sp-2) var(--sp-4);
+      white-space: nowrap; padding: 6px var(--sp-4) var(--sp-2);
       background: var(--color-surface);
       -webkit-backdrop-filter: var(--blur); backdrop-filter: var(--blur);
       display: none;
@@ -197,7 +203,7 @@
       position: fixed; left: 0; right: 0; z-index: 1001;
       background: var(--color-surface);
       -webkit-backdrop-filter: var(--blur); backdrop-filter: var(--blur);
-      padding: var(--sp-4);
+      padding: 6px var(--sp-4) var(--sp-4);
       display: none; overflow-y: auto; max-height: 45vh;
     }
     #detail-panel.visible { display: block; }
@@ -205,6 +211,7 @@
     .detail-header {
       display: flex; align-items: flex-start;
       justify-content: space-between; gap: var(--sp-3);
+      padding-top: var(--sp-3);
     }
     .detail-info { flex: 1; min-width: 0; }
     .tipo-badge {
@@ -326,9 +333,9 @@
     <nav id="date-filter" class="filter-row" role="toolbar" aria-label="Filtrar por data"></nav>
   </div>
 
-  <div id="viewport-list" role="list" aria-label="Blocos visíveis no mapa"></div>
+  <div id="viewport-list" class="has-separator" role="list" aria-label="Blocos visíveis no mapa"></div>
 
-  <section id="detail-panel" role="dialog" aria-label="Detalhes do bloco" aria-hidden="true">
+  <section id="detail-panel" class="has-separator" role="dialog" aria-label="Detalhes do bloco" aria-hidden="true">
     <div id="detail-content"></div>
   </section>
 
