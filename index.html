@@ -640,18 +640,30 @@
 
     function autoSelectToday() {
       var now = new Date();
-      var todayStr = String(now.getDate()).padStart(2, '0') + '/' +
-                     String(now.getMonth() + 1).padStart(2, '0') + '/' +
-                     now.getFullYear();
+      now.setHours(0, 0, 0, 0);
 
-      if (!BLOCOS_DATA.blocos.some(function(b) { return b.dia === todayStr; })) return false;
+      // Collect all unique dates and sort them
+      var pills = document.querySelectorAll('.date-pill[data-date]');
+      var bestPill = null;
+      var bestDiff = Infinity;
 
-      var pills = document.querySelectorAll('.date-pill');
       for (var i = 0; i < pills.length; i++) {
-        if (pills[i].dataset.date === todayStr) {
-          selectDate(todayStr, pills[i]);
-          return true;
+        var d = pills[i].dataset.date;
+        if (!d) continue;
+        var pts = d.split('/');
+        var dt = new Date(+pts[2], +pts[1] - 1, +pts[0]);
+        var diff = dt - now;
+        // Prefer today (diff === 0), then nearest future date, then nearest past
+        var absDiff = diff >= 0 ? diff : -diff + 1e12;
+        if (absDiff < bestDiff) {
+          bestDiff = absDiff;
+          bestPill = pills[i];
         }
+      }
+
+      if (bestPill) {
+        selectDate(bestPill.dataset.date, bestPill);
+        return true;
       }
       return false;
     }
