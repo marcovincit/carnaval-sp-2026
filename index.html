@@ -262,6 +262,8 @@
     #btn-route:disabled { opacity: 0.5; cursor: not-allowed; }
     #btn-calendar { background: var(--fill-secondary); color: var(--text-primary); }
     #btn-calendar:hover { background: var(--fill); }
+    #btn-gmaps { background: var(--fill-secondary); color: var(--text-primary); }
+    #btn-gmaps:hover { background: var(--fill); }
 
     /* Count badge */
     #bloco-count {
@@ -730,7 +732,8 @@
         '</div>' +
         '<div class="detail-actions">' +
           (hasRoute ? '<button id="btn-route" onclick="toggleRoute()">Ver trajeto <span aria-hidden="true">\u2192</span></button>' : '') +
-          '<button id="btn-calendar" onclick="addToCalendar()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true" style="width:16px;height:16px"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg>Adicionar ao calend\u00e1rio</button>' +
+          '<button id="btn-calendar" onclick="addToCalendar()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true" style="width:16px;height:16px"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg>Calend\u00e1rio</button>' +
+          '<button id="btn-gmaps" onclick="openGoogleMaps()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true" style="width:16px;height:16px"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>Google Maps</button>' +
         '</div>';
 
       document.getElementById('viewport-list').classList.remove('visible');
@@ -838,6 +841,13 @@
     /* ========================================
        ADD TO CALENDAR
        ======================================== */
+    function openGoogleMaps() {
+      if (!selectedBloco) return;
+      var b = selectedBloco;
+      var url = 'https://www.google.com/maps/search/?api=1&query=' + b.lat + ',' + b.lng;
+      window.open(url, '_blank');
+    }
+
     function addToCalendar() {
       if (!selectedBloco) return;
       var b = selectedBloco;
