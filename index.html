@@ -1006,14 +1006,14 @@
       });
     }
 
-    function selectDate(date, el) {
+    function selectDate(date, el, instant) {
       currentDate = date;
       var pills = document.querySelectorAll('.date-pill');
       for (var i = 0; i < pills.length; i++) {
         pills[i].setAttribute('aria-pressed', 'false');
       }
       el.setAttribute('aria-pressed', 'true');
-      el.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      el.scrollIntoView({ behavior: instant ? 'instant' : 'smooth', block: 'nearest', inline: 'center' });
       hideDetail();
       filterBlocos();
     }
@@ -1092,7 +1092,7 @@
       }
 
       if (bestPill) {
-        selectDate(bestPill.dataset.date, bestPill);
+        selectDate(bestPill.dataset.date, bestPill, true);
         return true;
       }
       return false;
