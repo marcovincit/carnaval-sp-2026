@@ -242,10 +242,10 @@
 
     /* Detail panel */
     #detail-panel {
-      position: fixed; bottom: 0; left: 0; right: 0; z-index: 1001;
+      position: fixed; left: 0; right: 0; z-index: 1001;
       background: var(--color-surface);
-      padding: var(--sp-4) var(--sp-4) calc(var(--sp-4) + var(--sab));
-      display: none;
+      padding: 0 var(--sp-4) calc(var(--sp-4) + var(--sab));
+      display: none; overflow-y: auto; max-height: 45vh;
     }
     #detail-panel.visible { display: block; }
 
