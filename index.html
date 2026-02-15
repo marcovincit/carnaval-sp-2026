@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#f2f2f7" media="(prefers-color-scheme: light)" id="meta-theme-light">
-  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" id="meta-theme-dark">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)" id="meta-theme-light">
+  <meta name="theme-color" content="#1c1c1e" media="(prefers-color-scheme: dark)" id="meta-theme-dark">
   <meta name="description" content="Mapa interativo com 327+ blocos de Carnaval de rua de São Paulo 2026. Datas, horários, trajetos e localização. Pré-carnaval, carnaval e pós-carnaval.">
   <title>Blocos de Carnaval SP 2026 — Mapa com 327+ Blocos de Rua</title>
   <meta name="keywords" content="blocos de carnaval SP 2026, carnaval de rua São Paulo, programação carnaval SP 2026, mapa blocos carnaval, blocos de rua SP, agenda carnaval São Paulo 2026">
@@ -832,7 +832,7 @@
        ======================================== */
     function setTheme(t) {
       isDark = t === 'dark';
-      var c = isDark ? '#000000' : '#f2f2f7';
+      var c = isDark ? '#1c1c1e' : '#ffffff';
       document.getElementById('meta-theme-light').content = c;
       document.getElementById('meta-theme-dark').content = c;
       if (tileLayer) tileLayer.setUrl(isDark ? TILE_DARK : TILE_LIGHT);
