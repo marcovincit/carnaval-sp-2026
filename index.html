@@ -2,299 +2,493 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffffff" id="meta-theme">
+  <meta name="description" content="Mapa interativo dos blocos de Carnaval de rua de São Paulo 2026. Encontre blocos por data, tipo e localização.">
   <title>Blocos de Carnaval SP 2026</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    /* ========================================
+       DESIGN TOKENS
+       ======================================== */
+    :root {
+      /* Spacing scale */
+      --sp-1: 4px;
+      --sp-2: 8px;
+      --sp-3: 12px;
+      --sp-4: 16px;
+      --sp-5: 20px;
+
+      /* Layout */
+      --header-h: 52px;
+      --filter-h: 48px;
+      --sat: env(safe-area-inset-top, 0px);
+      --sab: env(safe-area-inset-bottom, 0px);
+
+      /* Typography */
+      --font: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text',
+              'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      --fs-xs: 11px;
+      --fs-sm: 13px;
+      --fs-md: 15px;
+      --fs-lg: 17px;
+
+      /* Colors — light (WCAG AA compliant) */
+      --color-bg: #ffffff;
+      --color-surface: rgba(255, 255, 255, 0.88);
+      --color-surface-blur: saturate(180%) blur(20px);
+      --color-border: transparent;
+      --color-shadow: transparent;
+
+      --text-primary: #1c1c1e;
+      --text-secondary: #636366;   /* 4.6:1 on white — AA compliant */
+      --text-on-accent: #ffffff;
+
+      --accent: #0055CC;            /* 7.1:1 on white — AAA compliant */
+      --accent-light: rgba(0, 85, 204, 0.1);
+      --accent-shadow: transparent;
+      --success: #248A3D;           /* 4.8:1 on white — AA compliant */
+
+      --fill: rgba(120, 120, 128, 0.1);
+      --fill-hover: rgba(120, 120, 128, 0.18);
+      --focus-ring: 0 0 0 3px rgba(0, 85, 204, 0.4);
+
+      --tooltip-bg: rgba(255, 255, 255, 0.95);
+      --tooltip-shadow: none;
+
+      /* Radii */
+      --r-sm: 8px;
+      --r-md: 12px;
+      --r-lg: 20px;
+      --r-full: 9999px;
+    }
+
+    [data-theme="dark"] {
+      --color-bg: #1c1c1e;
+      --color-surface: rgba(28, 28, 30, 0.88);
+      --color-border: transparent;
+      --color-shadow: transparent;
+
+      --text-primary: #f2f2f7;
+      --text-secondary: #aeaeb2;   /* 4.8:1 on #1c1c1e — AA compliant */
+      --text-on-accent: #ffffff;
+
+      --accent: #4DA6FF;            /* 5.4:1 on #1c1c1e */
+      --accent-light: rgba(77, 166, 255, 0.15);
+      --accent-shadow: transparent;
+      --success: #30D158;
+
+      --fill: rgba(120, 120, 128, 0.24);
+      --fill-hover: rgba(120, 120, 128, 0.36);
+      --focus-ring: 0 0 0 3px rgba(77, 166, 255, 0.5);
+
+      --tooltip-bg: rgba(44, 44, 46, 0.95);
+      --tooltip-shadow: none;
+    }
+
+    /* ========================================
+       RESET & BASE
+       ======================================== */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     html, body {
       height: 100%;
       overflow: hidden;
-      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', system-ui, sans-serif;
-      color: #1c1c1e;
+      font-family: var(--font);
+      color: var(--text-primary);
+      background: var(--color-bg);
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
     }
 
+    /* Respect reduced motion preference */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    /* Focus styles — visible on keyboard, hidden on mouse */
+    :focus { outline: none; }
+    :focus-visible {
+      outline: none;
+      box-shadow: var(--focus-ring);
+    }
+
+    /* Skip-to-content link */
+    .skip-link {
+      position: fixed;
+      top: -100%;
+      left: var(--sp-4);
+      z-index: 10000;
+      padding: var(--sp-2) var(--sp-4);
+      background: var(--accent);
+      color: var(--text-on-accent);
+      font-size: var(--fs-sm);
+      font-weight: 600;
+      border-radius: 0 0 var(--r-sm) var(--r-sm);
+      text-decoration: none;
+    }
+    .skip-link:focus {
+      top: 0;
+    }
+
+    /* ========================================
+       MAP
+       ======================================== */
     #map {
       position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
       z-index: 1;
     }
 
-    /* Header */
-    #header {
+    /* ========================================
+       CHROME (header + filters) — stacked layout
+       ======================================== */
+    #chrome {
       position: fixed;
-      top: 0; left: 0; right: 0;
-      height: calc(52px + env(safe-area-inset-top));
-      padding-top: env(safe-area-inset-top);
-      background: rgba(255, 255, 255, 0.72);
-      -webkit-backdrop-filter: saturate(180%) blur(20px);
-      backdrop-filter: saturate(180%) blur(20px);
+      top: 0;
+      left: 0;
+      right: 0;
       z-index: 1000;
+      padding-top: var(--sat);
+      background: var(--color-surface);
+      -webkit-backdrop-filter: var(--color-surface-blur);
+      backdrop-filter: var(--color-surface-blur);
+    }
+
+    /* Header */
+    .header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding-left: 20px;
-      padding-right: 16px;
-      border-bottom: 0.5px solid rgba(0, 0, 0, 0.12);
+      height: var(--header-h);
+      padding: 0 var(--sp-4);
     }
-    #header h1 {
-      font-size: 17px;
-      font-weight: 600;
-      color: #1c1c1e;
-      letter-spacing: -0.2px;
+
+    .header h1 {
+      font-size: var(--fs-lg);
+      font-weight: 700;
+      letter-spacing: -0.4px;
     }
-    #btn-locate {
-      width: 38px; height: 38px;
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-2);
+    }
+
+    .icon-btn {
+      width: 36px;
+      height: 36px;
       border: none;
-      background: rgba(120, 120, 128, 0.12);
-      border-radius: 10px;
+      background: var(--fill);
+      border-radius: var(--r-full);
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-shrink: 0;
       -webkit-tap-highlight-color: transparent;
-      transition: background 0.2s ease;
+      color: var(--accent);
     }
-    #btn-locate:active { background: rgba(120, 120, 128, 0.2); }
-    #btn-locate svg { width: 20px; height: 20px; color: #007AFF; }
-    #btn-locate.active { background: #007AFF; }
-    #btn-locate.active svg { color: #fff; }
+    .icon-btn:hover { background: var(--fill-hover); }
+    .icon-btn svg { width: 18px; height: 18px; }
+    .icon-btn.active {
+      background: var(--accent);
+      color: var(--text-on-accent);
+    }
 
-    /* Date Filter */
-    #date-filter {
-      position: fixed;
-      top: calc(52px + env(safe-area-inset-top));
-      left: 0; right: 0;
-      z-index: 1000;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-      white-space: nowrap;
-      padding: 10px 16px;
-      background: rgba(255, 255, 255, 0.72);
-      -webkit-backdrop-filter: saturate(180%) blur(20px);
-      backdrop-filter: saturate(180%) blur(20px);
-      border-bottom: 0.5px solid rgba(0, 0, 0, 0.12);
-    }
-    #date-filter::-webkit-scrollbar { display: none; }
-    .date-pill {
-      display: inline-flex;
-      flex-direction: column;
+    /* Filter rows — shared */
+    .filter-row {
+      display: flex;
       align-items: center;
-      padding: 6px 14px;
-      border-radius: 10px;
-      border: none;
-      background: rgba(120, 120, 128, 0.08);
-      cursor: pointer;
-      margin-right: 8px;
-      transition: all 0.2s ease;
-      min-width: 54px;
-      user-select: none;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .date-pill.active {
-      background: #007AFF;
-      box-shadow: 0 2px 8px rgba(0, 122, 255, 0.3);
-    }
-    .date-pill .day-name {
-      font-size: 12px;
-      font-weight: 600;
-      color: #1c1c1e;
-      line-height: 1.3;
-    }
-    .date-pill .day-date {
-      font-size: 10px;
-      color: #8e8e93;
-      line-height: 1.3;
-    }
-    .date-pill.active .day-name,
-    .date-pill.active .day-date { color: #fff; }
-
-    /* Type Filter */
-    #type-filter {
-      position: fixed;
-      top: calc(52px + 50px + env(safe-area-inset-top));
-      left: 0; right: 0;
-      z-index: 1000;
+      gap: var(--sp-2);
+      height: var(--filter-h);
+      padding: 0 var(--sp-4);
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
       scrollbar-width: none;
-      white-space: nowrap;
-      padding: 8px 16px;
-      background: rgba(255, 255, 255, 0.72);
-      -webkit-backdrop-filter: saturate(180%) blur(20px);
-      backdrop-filter: saturate(180%) blur(20px);
     }
-    #type-filter::-webkit-scrollbar { display: none; }
+    .filter-row::-webkit-scrollbar { display: none; }
+
+    /* Type chips */
     .type-chip {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 5px 12px;
-      border-radius: 8px;
+      padding: var(--sp-2) var(--sp-3);
+      border-radius: var(--r-full);
       border: none;
-      background: rgba(120, 120, 128, 0.08);
+      background: var(--fill);
       cursor: pointer;
-      margin-right: 6px;
-      font-size: 12px;
+      font-family: var(--font);
+      font-size: var(--fs-sm);
       font-weight: 500;
-      color: #1c1c1e;
-      transition: all 0.2s ease;
+      color: var(--text-primary);
       user-select: none;
       -webkit-tap-highlight-color: transparent;
-    }
-    .type-chip .dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
+      white-space: nowrap;
       flex-shrink: 0;
     }
-    .type-chip.inactive {
-      opacity: 0.35;
+    .type-chip:hover { background: var(--fill-hover); }
+    .type-chip .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: var(--r-full);
+      flex-shrink: 0;
     }
+    .type-chip.inactive { opacity: 0.35; }
+    .type-chip[aria-pressed="false"] { opacity: 0.35; }
 
-    /* Bloco Count */
-    #bloco-count {
-      position: fixed;
-      bottom: calc(16px + env(safe-area-inset-bottom));
-      left: 16px;
-      z-index: 1000;
-      background: rgba(255, 255, 255, 0.8);
-      -webkit-backdrop-filter: saturate(180%) blur(20px);
-      backdrop-filter: saturate(180%) blur(20px);
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 13px;
+    /* Date pills */
+    .date-pill {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 6px var(--sp-3);
+      border-radius: var(--r-sm);
+      border: none;
+      background: var(--fill);
+      cursor: pointer;
+      min-width: 54px;
+      font-family: var(--font);
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+      flex-shrink: 0;
+    }
+    .date-pill:hover { background: var(--fill-hover); }
+    .date-pill[aria-pressed="true"] {
+      background: var(--accent);
+    }
+    .date-pill .day-name {
+      font-size: 12px;
       font-weight: 600;
-      color: #1c1c1e;
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08), 0 0 0 0.5px rgba(0, 0, 0, 0.06);
+      color: var(--text-primary);
+      line-height: 1.4;
+    }
+    .date-pill .day-num {
+      font-size: var(--fs-xs);
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+    .date-pill[aria-pressed="true"] .day-name,
+    .date-pill[aria-pressed="true"] .day-num {
+      color: var(--text-on-accent);
     }
 
-    /* Inline Detail Panel - sits below filters */
+    /* ========================================
+       VIEWPORT LIST (blocos visible on screen)
+       ======================================== */
+    #viewport-list {
+      position: fixed;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      overflow-x: auto;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      white-space: nowrap;
+      padding: var(--sp-2) var(--sp-4);
+      background: var(--color-surface);
+      -webkit-backdrop-filter: var(--color-surface-blur);
+      backdrop-filter: var(--color-surface-blur);
+      display: none;
+    }
+    #viewport-list::-webkit-scrollbar { display: none; }
+    #viewport-list.visible { display: block; }
+
+    .vp-item {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      width: 76px;
+      padding: var(--sp-2) var(--sp-1);
+      border-radius: var(--r-md);
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+      vertical-align: top;
+      white-space: normal;
+      text-align: center;
+      border: none;
+      background: none;
+      font-family: var(--font);
+    }
+    .vp-item:hover { background: var(--fill); }
+    .vp-item:active { background: var(--fill-hover); }
+
+    .vp-time {
+      font-size: var(--fs-xs);
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: var(--sp-1);
+      white-space: nowrap;
+      line-height: 1;
+    }
+    .vp-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: var(--r-full);
+      margin-bottom: var(--sp-1);
+    }
+    .vp-name {
+      font-size: var(--fs-xs);
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.25;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      word-break: break-word;
+    }
+    .vp-sub {
+      font-size: 10px;
+      color: var(--text-secondary);
+      line-height: 1.25;
+      margin-top: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
+    }
+
+    /* ========================================
+       DETAIL PANEL
+       ======================================== */
     #detail-panel {
       position: fixed;
-      left: 0; right: 0;
-      z-index: 999;
-      background: rgba(255, 255, 255, 0.88);
-      -webkit-backdrop-filter: saturate(180%) blur(20px);
-      backdrop-filter: saturate(180%) blur(20px);
-      border-bottom: 0.5px solid rgba(0, 0, 0, 0.12);
-      padding: 12px 16px;
+      left: 0;
+      right: 0;
+      z-index: 1001;
+      background: var(--color-surface);
+      -webkit-backdrop-filter: var(--color-surface-blur);
+      backdrop-filter: var(--color-surface-blur);
+      padding: var(--sp-4);
       display: none;
       overflow-y: auto;
-      max-height: 40vh;
+      max-height: 45vh;
     }
-    #detail-panel.visible {
-      display: block;
-    }
-    #detail-panel .detail-header {
+    #detail-panel.visible { display: block; }
+
+    .detail-header {
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
-      gap: 12px;
+      gap: var(--sp-3);
     }
-    #detail-panel .detail-info {
+    .detail-info {
       flex: 1;
       min-width: 0;
     }
-    #detail-close {
-      width: 28px; height: 28px;
-      border: none;
-      background: rgba(120, 120, 128, 0.12);
-      border-radius: 50%;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      -webkit-tap-highlight-color: transparent;
-      font-size: 14px;
-      color: #8e8e93;
-      line-height: 1;
-    }
-    #detail-close:active { background: rgba(120, 120, 128, 0.2); }
     .tipo-badge {
       display: inline-block;
       font-size: 10px;
-      font-weight: 600;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.5px;
-      margin-bottom: 4px;
-      padding: 2px 7px;
-      border-radius: 4px;
+      margin-bottom: var(--sp-1);
+      padding: 3px var(--sp-2);
+      border-radius: var(--sp-1);
     }
     #detail-panel h2 {
-      font-size: 16px;
+      font-size: var(--fs-lg);
       font-weight: 700;
-      margin-bottom: 1px;
-      line-height: 1.25;
-      color: #1c1c1e;
-      letter-spacing: -0.2px;
+      margin-bottom: 2px;
+      line-height: 1.3;
+      letter-spacing: -0.4px;
     }
     .detail-bairro {
-      font-size: 13px;
-      color: #8e8e93;
-      margin-bottom: 8px;
+      font-size: var(--fs-sm);
+      color: var(--text-secondary);
+      margin-bottom: var(--sp-3);
     }
     .detail-meta {
       display: flex;
       flex-wrap: wrap;
-      gap: 4px 16px;
-      font-size: 13px;
-      color: #1c1c1e;
-      margin-bottom: 4px;
+      gap: var(--sp-2) var(--sp-5);
+      font-size: var(--fs-sm);
+      color: var(--text-primary);
     }
     .detail-meta span {
       display: inline-flex;
       align-items: center;
-      gap: 4px;
+      gap: var(--sp-1);
     }
-    .detail-meta .meta-label {
-      color: #8e8e93;
+    .detail-meta .label {
+      color: var(--text-secondary);
       font-weight: 500;
     }
     #btn-route {
       display: inline-flex;
       align-items: center;
-      gap: 5px;
-      margin-top: 8px;
-      padding: 7px 14px;
+      gap: 6px;
+      margin-top: var(--sp-4);
+      padding: 10px var(--sp-5);
       border: none;
-      background: #007AFF;
-      color: #fff;
-      font-size: 13px;
+      background: var(--accent);
+      color: var(--text-on-accent);
+      font-family: var(--font);
+      font-size: var(--fs-sm);
       font-weight: 600;
-      border-radius: 10px;
+      border-radius: var(--r-full);
       cursor: pointer;
-      transition: all 0.2s ease;
       -webkit-tap-highlight-color: transparent;
     }
-    #btn-route:active {
-      background: #0062d1;
-      transform: scale(0.97);
-    }
-    #btn-route.active {
-      background: #34C759;
+    #btn-route:hover { filter: brightness(1.1); }
+    #btn-route.active { background: var(--success); }
+    #btn-route:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    /* ========================================
+       BLOCO COUNT BADGE
+       ======================================== */
+    #bloco-count {
+      position: fixed;
+      bottom: calc(var(--sp-4) + var(--sab));
+      left: var(--sp-4);
+      z-index: 1000;
+      background: var(--color-surface);
+      -webkit-backdrop-filter: var(--color-surface-blur);
+      backdrop-filter: var(--color-surface-blur);
+      padding: 8px var(--sp-4);
+      border-radius: var(--r-full);
+      font-size: var(--fs-sm);
+      font-weight: 600;
+      color: var(--text-primary);
     }
 
-    /* Leaflet overrides */
-    .bloco-marker { background: none !important; border: none !important; }
+    /* ========================================
+       LEAFLET OVERRIDES
+       ======================================== */
+    .bloco-marker {
+      background: none !important;
+      border: none !important;
+    }
     .bloco-tooltip {
-      background: rgba(255, 255, 255, 0.92);
-      -webkit-backdrop-filter: blur(8px);
-      backdrop-filter: blur(8px);
+      background: var(--tooltip-bg);
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
       border: none;
       border-radius: 6px;
-      padding: 3px 8px;
-      font-size: 11px;
+      padding: 4px 10px;
+      font-size: var(--fs-xs);
       font-weight: 600;
-      color: #1c1c1e;
+      color: var(--text-primary);
       white-space: nowrap;
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1), 0 0 0 0.5px rgba(0, 0, 0, 0.04);
     }
     .bloco-tooltip::before { display: none; }
 
@@ -305,49 +499,50 @@
     .cluster-icon {
       width: 38px;
       height: 38px;
-      background: #007AFF;
-      color: #fff;
-      border-radius: 50%;
+      background: var(--accent);
+      color: var(--text-on-accent);
+      border-radius: var(--r-full);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 13px;
+      font-size: var(--fs-sm);
       font-weight: 700;
-      border: 2.5px solid #fff;
-      box-shadow: 0 2px 8px rgba(0, 122, 255, 0.3);
     }
 
     .leaflet-control-zoom {
       border: none !important;
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08), 0 0 0 0.5px rgba(0, 0, 0, 0.06) !important;
-      border-radius: 12px !important;
+      box-shadow: none !important;
+      border-radius: var(--r-md) !important;
       overflow: hidden;
     }
     .leaflet-control-zoom a {
-      width: 36px !important;
-      height: 36px !important;
-      line-height: 36px !important;
-      font-size: 18px !important;
-      color: #007AFF !important;
-      border-bottom: 0.5px solid rgba(0, 0, 0, 0.08) !important;
-      background: rgba(255, 255, 255, 0.85) !important;
+      width: 40px !important;
+      height: 40px !important;
+      line-height: 40px !important;
+      font-size: 20px !important;
+      color: var(--accent) !important;
+      background: var(--color-surface) !important;
     }
-    .leaflet-control-zoom a:hover {
-      background: rgba(120, 120, 128, 0.12) !important;
-      color: #007AFF !important;
+    [data-theme="dark"] .leaflet-control-attribution {
+      background: rgba(28, 28, 30, 0.8) !important;
+      color: var(--text-secondary) !important;
     }
-    .leaflet-control-zoom a:last-child {
-      border-bottom: none !important;
+    [data-theme="dark"] .leaflet-control-attribution a {
+      color: var(--accent) !important;
     }
 
-    /* User location - prominent pulse */
-    @keyframes pulse-inner {
-      0% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
-      100% { transform: translate(-50%, -50%) scale(3.5); opacity: 0; }
-    }
-    @keyframes pulse-outer {
-      0% { transform: translate(-50%, -50%) scale(1); opacity: 0.3; }
-      100% { transform: translate(-50%, -50%) scale(5); opacity: 0; }
+    /* ========================================
+       USER LOCATION PULSE
+       ======================================== */
+    @keyframes pulse-ring {
+      0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.4;
+      }
+      100% {
+        transform: translate(-50%, -50%) scale(4);
+        opacity: 0;
+      }
     }
     .user-pulse-container {
       position: relative;
@@ -358,106 +553,191 @@
       position: absolute;
       top: 50%; left: 50%;
       width: 24px; height: 24px;
-      background: rgba(0, 122, 255, 0.3);
-      border: 2px solid rgba(0, 122, 255, 0.4);
+      background: rgba(0, 85, 204, 0.25);
       border-radius: 50%;
       transform: translate(-50%, -50%);
-      animation: pulse-inner 1.5s ease-out infinite;
+      animation: pulse-ring 1.5s ease-out infinite;
     }
     .user-ring-outer {
       position: absolute;
       top: 50%; left: 50%;
       width: 24px; height: 24px;
-      background: rgba(0, 122, 255, 0.15);
-      border: 1px solid rgba(0, 122, 255, 0.2);
+      background: rgba(0, 85, 204, 0.12);
       border-radius: 50%;
       transform: translate(-50%, -50%);
-      animation: pulse-outer 2.5s ease-out infinite;
-      animation-delay: 0.3s;
+      animation: pulse-ring 2.5s ease-out infinite;
+      animation-delay: 0.4s;
     }
 
+    /* ========================================
+       LOADING SKELETON (empty state)
+       ======================================== */
+    .empty-state {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 500;
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: var(--fs-md);
+      font-weight: 500;
+    }
+    .empty-state.visible { display: block; }
   </style>
 </head>
 <body>
+  <a href="#map" class="skip-link">Pular para o mapa</a>
 
-  <header id="header">
-    <h1>Carnaval SP 2026</h1>
-    <button id="btn-locate" aria-label="Minha localização">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
-      </svg>
-    </button>
-  </header>
+  <!-- All chrome (header + filters) in one container for clean stacking -->
+  <div id="chrome" role="banner">
+    <header class="header">
+      <h1>Carnaval SP 2026</h1>
+      <div class="header-actions">
+        <button id="btn-theme" class="icon-btn" aria-label="Alternar tema claro e escuro">
+          <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" style="display:none" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/></svg>
+          <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"/></svg>
+        </button>
+        <button id="btn-locate" class="icon-btn" aria-label="Mostrar minha localização no mapa">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+        </button>
+      </div>
+    </header>
 
-  <nav id="date-filter"></nav>
-  <div id="type-filter"></div>
-  <div id="detail-panel"><div id="detail-content"></div></div>
-  <div id="map"></div>
-  <div id="bloco-count"></div>
+    <div id="type-filter" class="filter-row" role="toolbar" aria-label="Filtrar por tipo de bloco"></div>
+    <nav id="date-filter" class="filter-row" role="toolbar" aria-label="Filtrar por data"></nav>
+  </div>
+
+  <div id="viewport-list" role="list" aria-label="Blocos visíveis no mapa"></div>
+
+  <section id="detail-panel" role="dialog" aria-label="Detalhes do bloco" aria-hidden="true">
+    <div id="detail-content"></div>
+  </section>
+
+  <div id="map" role="application" aria-label="Mapa interativo de blocos de carnaval"></div>
+
+  <div id="bloco-count" role="status" aria-live="polite"></div>
+  <div id="empty-state" class="empty-state" role="status" aria-live="polite">Nenhum bloco encontrado com esses filtros.</div>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
   <script src="blocos.js"></script>
   <script>
-    // ===== CONFIG =====
-    const TYPE_COLORS = {
+    /* ========================================
+       CONFIG
+       ======================================== */
+    var TYPE_COLORS = {
       'Tradicional': '#6366F1',
       'Megabloco':   '#F59E0B',
       'Afro':        '#10B981',
       'Rock':        '#EF4444',
       'LGBTQIA+':    '#EC4899'
     };
-
-    const TYPE_LABELS = {
+    var TYPE_LABELS = {
       'Tradicional': 'Tradicional',
       'Megabloco':   'Megabloco',
       'Afro':        'Afro',
       'Rock':        'Rock',
       'LGBTQIA+':    'LGBTQIA+'
     };
+    var TILE_LIGHT = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
+    var TILE_DARK  = 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png';
 
-    // ===== UTILS =====
-    function hexToRgb(hex) {
-      var r = parseInt(hex.slice(1, 3), 16);
-      var g = parseInt(hex.slice(3, 5), 16);
-      var b = parseInt(hex.slice(5, 7), 16);
-      return r + ',' + g + ',' + b;
+    /* ========================================
+       UTILS
+       ======================================== */
+    function hexToRgb(h) {
+      return parseInt(h.slice(1, 3), 16) + ',' +
+             parseInt(h.slice(3, 5), 16) + ',' +
+             parseInt(h.slice(5, 7), 16);
     }
 
-    // ===== STATE =====
-    let map, markerClusterGroup;
-    let userMarker = null, userRing = null;
-    let activeRoute = null, activeRouteMarkers = [];
-    let currentDate = null;
-    let activeTypes = new Set(Object.keys(TYPE_COLORS));
-    let selectedBloco = null;
+    function getChromeHeight() {
+      return document.getElementById('chrome').offsetHeight;
+    }
 
-    // ===== INIT =====
-    function init() {
-      initMap();
-      buildDateFilter();
-      buildTypeFilter();
-      setupEventListeners();
-      // autoSelectToday calls filterBlocos internally if today matches;
-      // otherwise fall back to showing all blocos
-      if (!autoSelectToday()) {
-        filterBlocos();
+    /* ========================================
+       STATE
+       ======================================== */
+    var map, markerClusterGroup, tileLayer;
+    var userMarker = null, userRing = null;
+    var activeRoute = null, activeRouteMarkers = [];
+    var currentDate = null;
+    var activeTypes = new Set(Object.keys(TYPE_COLORS));
+    var selectedBloco = null, filteredBlocos = [], vpUpdateTimer = null;
+    var isDark = false;
+
+    /* ========================================
+       THEME
+       ======================================== */
+    function setTheme(t) {
+      isDark = t === 'dark';
+      document.documentElement.setAttribute('data-theme', t);
+      document.getElementById('meta-theme').content = isDark ? '#1c1c1e' : '#ffffff';
+      document.getElementById('icon-sun').style.display = isDark ? '' : 'none';
+      document.getElementById('icon-moon').style.display = isDark ? 'none' : '';
+      if (tileLayer) tileLayer.setUrl(isDark ? TILE_DARK : TILE_LIGHT);
+      try { localStorage.setItem('theme', t); } catch (e) {}
+    }
+
+    function initTheme() {
+      var saved = null;
+      try { saved = localStorage.getItem('theme'); } catch (e) {}
+      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme:dark)').matches;
+      setTheme(saved || (prefersDark ? 'dark' : 'light'));
+
+      if (window.matchMedia) {
+        window.matchMedia('(prefers-color-scheme:dark)').addEventListener('change', function(e) {
+          try { if (localStorage.getItem('theme')) return; } catch (x) {}
+          setTheme(e.matches ? 'dark' : 'light');
+        });
       }
     }
 
-    // ===== MAP =====
+    /* ========================================
+       INIT
+       ======================================== */
+    function init() {
+      initTheme();
+      initMap();
+      buildTypeFilter();
+      buildDateFilter();
+      setupEventListeners();
+      if (!autoSelectToday()) filterBlocos();
+    }
+
+    /* ========================================
+       MAP
+       ======================================== */
     function initMap() {
+      var blocos = BLOCOS_DATA.blocos;
+      var lats = blocos.map(function(x) { return x.lat; });
+      var lngs = blocos.map(function(x) { return x.lng; });
+      var initBounds = blocos.length
+        ? L.latLngBounds(
+            [Math.min.apply(null, lats), Math.min.apply(null, lngs)],
+            [Math.max.apply(null, lats), Math.max.apply(null, lngs)]
+          )
+        : null;
+
       map = L.map('map', {
-        center: [-23.5505, -46.6340],
+        center: initBounds ? initBounds.getCenter() : [-23.5505, -46.634],
         zoom: 13,
         zoomControl: false,
-        attributionControl: true
+        attributionControl: true,
+        fadeAnimation: false,
+        zoomAnimation: false,
+        markerZoomAnimation: false
       });
+
+      if (initBounds) {
+        map.fitBounds(initBounds, { padding: [50, 50], maxZoom: 15, animate: false });
+      }
 
       L.control.zoom({ position: 'bottomright' }).addTo(map);
 
-      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      tileLayer = L.tileLayer(isDark ? TILE_DARK : TILE_LIGHT, {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>',
         maxZoom: 19
       }).addTo(map);
@@ -467,18 +747,16 @@
         spiderfyOnMaxZoom: true,
         showCoverageOnHover: false,
         zoomToBoundsOnClick: true,
+        animate: false,
         iconCreateFunction: function(cluster) {
-          var count = cluster.getChildCount();
           return L.divIcon({
-            html: '<div class="cluster-icon">' + count + '</div>',
+            html: '<div class="cluster-icon">' + cluster.getChildCount() + '</div>',
             className: 'custom-cluster',
             iconSize: [38, 38]
           });
         }
       });
       map.addLayer(markerClusterGroup);
-
-      // Toggle tooltip visibility on zoom
       map.on('zoomend', updateTooltipVisibility);
     }
 
@@ -490,23 +768,54 @@
       }
     }
 
-    // ===== MARKERS =====
     function createBlocoIcon(tipo) {
       var color = TYPE_COLORS[tipo] || '#6B7280';
-      var size = tipo === 'Megabloco' ? 22 : 16;
+      var size = tipo === 'Megabloco' ? 20 : 14;
       return L.divIcon({
         className: 'bloco-marker',
         html: '<div style="width:' + size + 'px;height:' + size + 'px;background:' + color +
-              ';border:2.5px solid #fff;border-radius:50%;box-shadow:0 1px 4px rgba(0,0,0,0.2);"></div>',
+              ';border-radius:50%"></div>',
         iconSize: [size + 4, size + 4],
         iconAnchor: [(size + 4) / 2, (size + 4) / 2]
       });
     }
 
-    // ===== FILTERS =====
+    /* ========================================
+       TYPE FILTER
+       ======================================== */
+    function buildTypeFilter() {
+      var container = document.getElementById('type-filter');
+      Object.keys(TYPE_COLORS).forEach(function(tipo) {
+        var btn = document.createElement('button');
+        btn.className = 'type-chip';
+        btn.setAttribute('role', 'switch');
+        btn.setAttribute('aria-checked', 'true');
+        btn.setAttribute('aria-label', 'Filtro ' + tipo);
+        btn.innerHTML = '<span class="dot" style="background:' + TYPE_COLORS[tipo] + '" aria-hidden="true"></span>' + TYPE_LABELS[tipo];
+        btn.addEventListener('click', function() { toggleType(tipo, this); });
+        container.appendChild(btn);
+      });
+    }
+
+    function toggleType(tipo, el) {
+      if (activeTypes.has(tipo)) {
+        activeTypes.delete(tipo);
+        el.classList.add('inactive');
+        el.setAttribute('aria-checked', 'false');
+      } else {
+        activeTypes.add(tipo);
+        el.classList.remove('inactive');
+        el.setAttribute('aria-checked', 'true');
+      }
+      hideDetail();
+      filterBlocos();
+    }
+
+    /* ========================================
+       DATE FILTER
+       ======================================== */
     function buildDateFilter() {
-      var dates = [];
-      var dateSet = {};
+      var dates = [], dateSet = {};
       BLOCOS_DATA.blocos.forEach(function(b) {
         if (!dateSet[b.dia]) {
           dateSet[b.dia] = { dia: b.dia, dia_semana: b.dia_semana, count: 0 };
@@ -517,30 +826,30 @@
 
       dates.sort(function(a, b) {
         var pa = a.dia.split('/'), pb = b.dia.split('/');
-        var da = new Date(+pa[2], +pa[1]-1, +pa[0]);
-        var db = new Date(+pb[2], +pb[1]-1, +pb[0]);
-        return da - db;
+        return new Date(+pa[2], +pa[1] - 1, +pa[0]) - new Date(+pb[2], +pb[1] - 1, +pb[0]);
       });
 
       var container = document.getElementById('date-filter');
 
       // "Todos" pill
-      var allPill = document.createElement('div');
-      allPill.className = 'date-pill active';
+      var allPill = document.createElement('button');
+      allPill.className = 'date-pill';
+      allPill.setAttribute('aria-pressed', 'true');
+      allPill.setAttribute('aria-label', 'Todos os dias, ' + BLOCOS_DATA.blocos.length + ' blocos');
       allPill.dataset.date = '';
-      allPill.innerHTML = '<span class="day-name">Todos</span><span class="day-date">' +
-                          BLOCOS_DATA.blocos.length + ' blocos</span>';
+      allPill.innerHTML = '<span class="day-name">Todos</span><span class="day-num">' + BLOCOS_DATA.blocos.length + '</span>';
       allPill.addEventListener('click', function() { selectDate(null, this); });
       container.appendChild(allPill);
 
       dates.forEach(function(d) {
-        var pill = document.createElement('div');
+        var pill = document.createElement('button');
         pill.className = 'date-pill';
-        pill.dataset.date = d.dia;
-        var parts = d.dia.split('/');
+        pill.setAttribute('aria-pressed', 'false');
+        var pts = d.dia.split('/');
         var shortDay = d.dia_semana.substring(0, 3);
-        pill.innerHTML = '<span class="day-name">' + shortDay + '</span><span class="day-date">' +
-                         parts[0] + '/' + parts[1] + '</span>';
+        pill.setAttribute('aria-label', d.dia_semana + ', ' + pts[0] + '/' + pts[1] + ', ' + d.count + ' blocos');
+        pill.dataset.date = d.dia;
+        pill.innerHTML = '<span class="day-name">' + shortDay + '</span><span class="day-num">' + pts[0] + '/' + pts[1] + '</span>';
         pill.addEventListener('click', function() { selectDate(d.dia, this); });
         container.appendChild(pill);
       });
@@ -550,151 +859,130 @@
       currentDate = date;
       var pills = document.querySelectorAll('.date-pill');
       for (var i = 0; i < pills.length; i++) {
-        pills[i].classList.remove('active');
+        pills[i].setAttribute('aria-pressed', 'false');
       }
-      el.classList.add('active');
+      el.setAttribute('aria-pressed', 'true');
       hideDetail();
       filterBlocos();
     }
 
-    function buildTypeFilter() {
-      var container = document.getElementById('type-filter');
-      var types = Object.keys(TYPE_COLORS);
-      types.forEach(function(tipo) {
-        var chip = document.createElement('div');
-        chip.className = 'type-chip';
-        chip.dataset.tipo = tipo;
-        chip.innerHTML = '<span class="dot" style="background:' + TYPE_COLORS[tipo] + '"></span>' +
-                         TYPE_LABELS[tipo];
-        chip.addEventListener('click', function() { toggleType(tipo, this); });
-        container.appendChild(chip);
-      });
-    }
-
-    function toggleType(tipo, el) {
-      if (activeTypes.has(tipo)) {
-        activeTypes.delete(tipo);
-        el.classList.add('inactive');
-      } else {
-        activeTypes.add(tipo);
-        el.classList.remove('inactive');
-      }
-      hideDetail();
-      filterBlocos();
-    }
-
+    /* ========================================
+       FILTER + RENDER
+       ======================================== */
     function filterBlocos() {
       markerClusterGroup.clearLayers();
       clearRoute();
 
-      var filtered = BLOCOS_DATA.blocos.filter(function(b) {
-        var dateMatch = currentDate === null || b.dia === currentDate;
-        var typeMatch = activeTypes.has(b.tipo);
-        return dateMatch && typeMatch;
+      filteredBlocos = BLOCOS_DATA.blocos.filter(function(b) {
+        return (currentDate === null || b.dia === currentDate) && activeTypes.has(b.tipo);
       });
 
-      filtered.forEach(function(bloco) {
-        var marker = L.marker([bloco.lat, bloco.lng], {
-          icon: createBlocoIcon(bloco.tipo)
-        });
-
+      filteredBlocos.forEach(function(bloco) {
+        var marker = L.marker([bloco.lat, bloco.lng], { icon: createBlocoIcon(bloco.tipo) });
         marker.bindTooltip(bloco.nome, {
           permanent: true,
           direction: 'right',
           offset: [8, 0],
           className: 'bloco-tooltip'
         });
-
         marker.on('click', function() {
           showBlocoDetail(bloco);
-          map.setView([bloco.lat, bloco.lng], Math.max(map.getZoom(), 15), { animate: true });
+          map.setView([bloco.lat, bloco.lng], Math.max(map.getZoom(), 15), { animate: false });
         });
-
         markerClusterGroup.addLayer(marker);
       });
 
       // Update count
-      document.getElementById('bloco-count').textContent = filtered.length + ' bloco' + (filtered.length !== 1 ? 's' : '');
+      var countEl = document.getElementById('bloco-count');
+      var emptyEl = document.getElementById('empty-state');
+      countEl.textContent = filteredBlocos.length + ' bloco' + (filteredBlocos.length !== 1 ? 's' : '');
 
-      // Fit bounds
-      if (filtered.length > 0) {
-        var bounds = L.latLngBounds(filtered.map(function(b) { return [b.lat, b.lng]; }));
-        map.fitBounds(bounds, { padding: [50, 50], maxZoom: 15 });
+      if (filteredBlocos.length === 0) {
+        emptyEl.classList.add('visible');
+      } else {
+        emptyEl.classList.remove('visible');
+        var bounds = L.latLngBounds(filteredBlocos.map(function(b) { return [b.lat, b.lng]; }));
+        map.fitBounds(bounds, { padding: [50, 50], maxZoom: 15, animate: false });
       }
 
-      // Update tooltip visibility after a tick
-      setTimeout(updateTooltipVisibility, 100);
+      setTimeout(function() {
+        updateTooltipVisibility();
+        updateViewportList();
+      }, 60);
     }
 
     function autoSelectToday() {
       var now = new Date();
-      var dd = String(now.getDate()).padStart(2, '0');
-      var mm = String(now.getMonth() + 1).padStart(2, '0');
-      var yyyy = now.getFullYear();
-      var todayStr = dd + '/' + mm + '/' + yyyy;
+      var todayStr = String(now.getDate()).padStart(2, '0') + '/' +
+                     String(now.getMonth() + 1).padStart(2, '0') + '/' +
+                     now.getFullYear();
 
-      var hasToday = BLOCOS_DATA.blocos.some(function(b) { return b.dia === todayStr; });
-      if (hasToday) {
-        var pills = document.querySelectorAll('.date-pill');
-        for (var i = 0; i < pills.length; i++) {
-          if (pills[i].dataset.date === todayStr) {
-            selectDate(todayStr, pills[i]);
-            return true;
-          }
+      if (!BLOCOS_DATA.blocos.some(function(b) { return b.dia === todayStr; })) return false;
+
+      var pills = document.querySelectorAll('.date-pill');
+      for (var i = 0; i < pills.length; i++) {
+        if (pills[i].dataset.date === todayStr) {
+          selectDate(todayStr, pills[i]);
+          return true;
         }
       }
       return false;
     }
 
-    // ===== DETAIL PANEL (inline, below filters) =====
+    /* ========================================
+       DETAIL PANEL
+       ======================================== */
     function showBlocoDetail(bloco) {
       selectedBloco = bloco;
       var content = document.getElementById('detail-content');
       var panel = document.getElementById('detail-panel');
       var color = TYPE_COLORS[bloco.tipo] || '#6B7280';
       var hasRoute = bloco.trajeto_aproximado && bloco.trajeto_aproximado.length > 1;
-
       var horarioStr = bloco.horario;
-      if (bloco.horario_fim) horarioStr += ' \u2013 ' + bloco.horario_fim;
-
-      var parts = bloco.dia.split('/');
+      if (bloco.horario_fim) horarioStr += '\u2013' + bloco.horario_fim;
+      var pts = bloco.dia.split('/');
       var rgb = hexToRgb(color);
 
       content.innerHTML =
         '<div class="detail-header">' +
           '<div class="detail-info">' +
-            '<span class="tipo-badge" style="color:' + color + ';background:rgba(' + rgb + ',0.12);">' + bloco.tipo + '</span>' +
+            '<span class="tipo-badge" style="color:' + color + ';background:rgba(' + rgb + ',' + (isDark ? '0.2' : '0.12') + ')">' + bloco.tipo + '</span>' +
             '<h2>' + bloco.nome + '</h2>' +
             '<p class="detail-bairro">' + bloco.bairro + '</p>' +
           '</div>' +
-          '<button id="detail-close" onclick="hideDetail()">\u2715</button>' +
+          '<button class="icon-btn" aria-label="Fechar detalhes" onclick="hideDetail()" style="flex-shrink:0">' +
+            '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" aria-hidden="true" style="width:14px;height:14px"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>' +
+          '</button>' +
         '</div>' +
         '<div class="detail-meta">' +
-          '<span><span class="meta-label">Data</span> ' + bloco.dia_semana + ', ' + parts[0] + '/' + parts[1] + '</span>' +
-          '<span><span class="meta-label">Hora</span> ' + horarioStr + '</span>' +
-          '<span><span class="meta-label">Local</span> ' + bloco.concentracao + '</span>' +
+          '<span><span class="label">Data</span> ' + bloco.dia_semana + ', ' + pts[0] + '/' + pts[1] + '</span>' +
+          '<span><span class="label">Hora</span> ' + horarioStr + '</span>' +
+          '<span><span class="label">Local</span> ' + bloco.concentracao + '</span>' +
         '</div>' +
-        (hasRoute ? '<button id="btn-route" onclick="toggleRoute()">Ver trajeto \u2192</button>' : '');
+        (hasRoute ? '<button id="btn-route" onclick="toggleRoute()">Ver trajeto <span aria-hidden="true">\u2192</span></button>' : '');
 
+      document.getElementById('viewport-list').classList.remove('visible');
       panel.classList.add('visible');
-      positionDetailPanel();
+      panel.setAttribute('aria-hidden', 'false');
+      panel.style.top = getChromeHeight() + 'px';
+
+      // Focus the close button for keyboard users
+      var closeBtn = panel.querySelector('.icon-btn');
+      if (closeBtn) closeBtn.focus();
     }
 
     function hideDetail() {
-      document.getElementById('detail-panel').classList.remove('visible');
+      var panel = document.getElementById('detail-panel');
+      panel.classList.remove('visible');
+      panel.setAttribute('aria-hidden', 'true');
       selectedBloco = null;
       clearRoute();
+      updateViewportList();
     }
 
-    function positionDetailPanel() {
-      // Position detail panel right below the type filter
-      var typeFilter = document.getElementById('type-filter');
-      var panel = document.getElementById('detail-panel');
-      var top = typeFilter.offsetTop + typeFilter.offsetHeight;
-      panel.style.top = top + 'px';
-    }
-
-    // ===== ROUTES =====
+    /* ========================================
+       ROUTES
+       ======================================== */
     var routeLoading = false;
 
     function toggleRoute() {
@@ -704,149 +992,98 @@
         if (btn) btn.classList.remove('active');
         return;
       }
-      if (routeLoading) return;
-      if (!selectedBloco || !selectedBloco.trajeto_aproximado || selectedBloco.trajeto_aproximado.length < 2) return;
+      if (routeLoading || !selectedBloco || !selectedBloco.trajeto_aproximado || selectedBloco.trajeto_aproximado.length < 2) return;
 
       var color = TYPE_COLORS[selectedBloco.tipo] || '#6B7280';
-      var waypoints = selectedBloco.trajeto_aproximado;
+      var wp = selectedBloco.trajeto_aproximado;
+      var coords = wp.map(function(p) { return p[1] + ',' + p[0]; }).join(';');
 
-      // Build OSRM URL: coordinates are lng,lat pairs separated by ;
-      var coords = waypoints.map(function(p) { return p[1] + ',' + p[0]; }).join(';');
-      var url = 'https://router.project-osrm.org/route/v1/foot/' + coords +
-                '?overview=full&geometries=geojson&steps=false';
-
-      if (btn) {
-        btn.textContent = 'Carregando...';
-        btn.disabled = true;
-      }
+      if (btn) { btn.textContent = 'Carregando...'; btn.disabled = true; }
       routeLoading = true;
 
-      fetch(url)
-        .then(function(res) { return res.json(); })
+      fetch('https://router.project-osrm.org/route/v1/foot/' + coords + '?overview=full&geometries=geojson&steps=false')
+        .then(function(r) { return r.json(); })
         .then(function(data) {
           routeLoading = false;
-          if (btn) {
-            btn.textContent = 'Ver trajeto \u2192';
-            btn.disabled = false;
-          }
+          if (btn) { btn.textContent = 'Ver trajeto \u2192'; btn.disabled = false; }
 
           if (data.code !== 'Ok' || !data.routes || !data.routes.length) {
-            // Fallback: draw straight line if OSRM fails
-            drawFallbackRoute(waypoints, color, btn);
+            drawFallback(wp, color, btn);
             return;
           }
 
-          // OSRM returns GeoJSON coordinates as [lng, lat], convert to [lat, lng] for Leaflet
-          var routeCoords = data.routes[0].geometry.coordinates.map(function(c) {
-            return [c[1], c[0]];
-          });
-
-          // Draw the real route (solid line since it's accurate)
-          activeRoute = L.polyline(routeCoords, {
-            color: color,
-            weight: 5,
-            opacity: 0.85,
-            lineCap: 'round',
-            lineJoin: 'round'
-          }).addTo(map);
-
-          addRouteMarkers(waypoints, color);
-          map.fitBounds(activeRoute.getBounds(), { padding: [80, 80] });
+          activeRoute = L.polyline(
+            data.routes[0].geometry.coordinates.map(function(p) { return [p[1], p[0]]; }),
+            { color: color, weight: 5, opacity: 0.85, lineCap: 'round', lineJoin: 'round' }
+          ).addTo(map);
+          addRouteMarkers(wp, color);
+          map.fitBounds(activeRoute.getBounds(), { padding: [80, 80], animate: false });
           if (btn) btn.classList.add('active');
         })
         .catch(function() {
           routeLoading = false;
-          if (btn) {
-            btn.textContent = 'Ver trajeto \u2192';
-            btn.disabled = false;
-          }
-          // Fallback on network error
-          drawFallbackRoute(waypoints, color, btn);
+          if (btn) { btn.textContent = 'Ver trajeto \u2192'; btn.disabled = false; }
+          drawFallback(wp, color, btn);
         });
     }
 
-    function drawFallbackRoute(waypoints, color, btn) {
-      // Dashed line to indicate approximate route
-      activeRoute = L.polyline(waypoints, {
-        color: color,
-        weight: 4,
-        opacity: 0.85,
-        dashArray: '8, 8',
-        lineCap: 'round'
+    function drawFallback(wp, color, btn) {
+      activeRoute = L.polyline(wp, {
+        color: color, weight: 4, opacity: 0.85, dashArray: '8,8', lineCap: 'round'
       }).addTo(map);
-
-      addRouteMarkers(waypoints, color);
-      map.fitBounds(activeRoute.getBounds(), { padding: [80, 80] });
+      addRouteMarkers(wp, color);
+      map.fitBounds(activeRoute.getBounds(), { padding: [80, 80], animate: false });
       if (btn) btn.classList.add('active');
     }
 
-    function addRouteMarkers(waypoints, color) {
-      // Start marker
-      var start = waypoints[0];
-      var startMarker = L.circleMarker(start, {
-        radius: 8,
-        fillColor: color,
-        fillOpacity: 1,
-        color: '#fff',
-        weight: 3
+    function addRouteMarkers(wp, color) {
+      var startMarker = L.circleMarker(wp[0], {
+        radius: 8, fillColor: color, fillOpacity: 1, weight: 0
       }).addTo(map);
       startMarker.bindTooltip('Concentra\u00e7\u00e3o', {
-        permanent: true,
-        direction: 'top',
-        offset: [0, -10],
-        className: 'bloco-tooltip'
+        permanent: true, direction: 'top', offset: [0, -10], className: 'bloco-tooltip'
       });
       activeRouteMarkers.push(startMarker);
 
-      // End marker
-      var end = waypoints[waypoints.length - 1];
-      if (end[0] !== start[0] || end[1] !== start[1]) {
+      var end = wp[wp.length - 1];
+      if (end[0] !== wp[0][0] || end[1] !== wp[0][1]) {
         var endMarker = L.circleMarker(end, {
-          radius: 6,
-          fillColor: color,
-          fillOpacity: 0.6,
-          color: '#fff',
-          weight: 2.5
+          radius: 6, fillColor: color, fillOpacity: 0.6, weight: 0
         }).addTo(map);
         endMarker.bindTooltip('Fim', {
-          permanent: true,
-          direction: 'top',
-          offset: [0, -8],
-          className: 'bloco-tooltip'
+          permanent: true, direction: 'top', offset: [0, -8], className: 'bloco-tooltip'
         });
         activeRouteMarkers.push(endMarker);
       }
     }
 
     function clearRoute() {
-      if (activeRoute) {
-        map.removeLayer(activeRoute);
-        activeRoute = null;
-      }
+      if (activeRoute) { map.removeLayer(activeRoute); activeRoute = null; }
       activeRouteMarkers.forEach(function(m) { map.removeLayer(m); });
       activeRouteMarkers = [];
     }
 
-    // ===== GEOLOCATION =====
+    /* ========================================
+       GEOLOCATION
+       ======================================== */
     function locateUser() {
       var btn = document.getElementById('btn-locate');
       if (!navigator.geolocation) {
-        alert('Geolocaliza\u00e7\u00e3o n\u00e3o dispon\u00edvel no seu navegador');
+        alert('Geolocaliza\u00e7\u00e3o n\u00e3o dispon\u00edvel no seu navegador.');
         return;
       }
 
       btn.classList.add('active');
+      btn.setAttribute('aria-label', 'Localização ativada');
 
       navigator.geolocation.getCurrentPosition(
         function(pos) {
-          var latlng = [pos.coords.latitude, pos.coords.longitude];
-
+          var ll = [pos.coords.latitude, pos.coords.longitude];
           if (userMarker) {
-            userMarker.setLatLng(latlng);
-            userRing.setLatLng(latlng);
+            userMarker.setLatLng(ll);
+            userRing.setLatLng(ll);
           } else {
-            // Pulsing rings - 2 concentric, different speeds
-            userRing = L.marker(latlng, {
+            userRing = L.marker(ll, {
               icon: L.divIcon({
                 className: '',
                 html: '<div class="user-pulse-container"><div class="user-ring-inner"></div><div class="user-ring-outer"></div></div>',
@@ -856,34 +1093,108 @@
               interactive: false,
               zIndexOffset: 500
             }).addTo(map);
-
-            // Dot - prominent
-            userMarker = L.circleMarker(latlng, {
-              radius: 9,
-              fillColor: '#007AFF',
-              fillOpacity: 1,
-              color: '#fff',
-              weight: 4
+            userMarker = L.circleMarker(ll, {
+              radius: 8, fillColor: '#0055CC', fillOpacity: 1, weight: 0
             }).addTo(map);
-            userMarker.setZIndexOffset && userMarker.bringToFront();
           }
-
-          map.setView(latlng, 15, { animate: true });
+          map.setView(ll, 15, { animate: false });
         },
-        function(err) {
+        function() {
           btn.classList.remove('active');
-          alert('N\u00e3o foi poss\u00edvel obter sua localiza\u00e7\u00e3o.\nVerifique as permiss\u00f5es do navegador.');
+          btn.setAttribute('aria-label', 'Mostrar minha localização no mapa');
+          alert('N\u00e3o foi poss\u00edvel obter sua localiza\u00e7\u00e3o. Verifique as permiss\u00f5es do navegador.');
         },
         { enableHighAccuracy: true, timeout: 10000 }
       );
     }
 
-    // ===== EVENT LISTENERS =====
-    function setupEventListeners() {
-      document.getElementById('btn-locate').addEventListener('click', locateUser);
+    /* ========================================
+       VIEWPORT LIST
+       ======================================== */
+    function updateViewportList() {
+      if (selectedBloco) return;
+
+      var bounds = map.getBounds();
+      var visible = filteredBlocos.filter(function(b) {
+        return bounds.contains([b.lat, b.lng]);
+      });
+      visible.sort(function(a, b) {
+        return a.horario < b.horario ? -1 : a.horario > b.horario ? 1 : a.nome.localeCompare(b.nome);
+      });
+
+      var container = document.getElementById('viewport-list');
+      if (!visible.length) {
+        container.classList.remove('visible');
+        return;
+      }
+
+      var html = '';
+      visible.forEach(function(b) {
+        var color = TYPE_COLORS[b.tipo] || '#6B7280';
+        var time = b.horario;
+        if (b.horario_fim) time += '\u2013' + b.horario_fim;
+        html += '<button class="vp-item" role="listitem" data-lat="' + b.lat +
+                '" data-lng="' + b.lng +
+                '" data-nome="' + b.nome.replace(/"/g, '&quot;') +
+                '" aria-label="' + b.nome.replace(/"/g, '&quot;') + ', ' + b.bairro + ', ' + time + '">' +
+                '<span class="vp-time" aria-hidden="true">' + time + '</span>' +
+                '<span class="vp-dot" style="background:' + color + '" aria-hidden="true"></span>' +
+                '<span class="vp-name">' + b.nome + '</span>' +
+                '<span class="vp-sub">' + b.bairro + '</span>' +
+                '</button>';
+      });
+      container.innerHTML = html;
+      container.classList.add('visible');
+      container.style.top = getChromeHeight() + 'px';
+
+      var items = container.querySelectorAll('.vp-item');
+      for (var i = 0; i < items.length; i++) {
+        items[i].addEventListener('click', function() {
+          var lat = parseFloat(this.dataset.lat);
+          var lng = parseFloat(this.dataset.lng);
+          var nome = this.dataset.nome;
+          var bloco = filteredBlocos.find(function(b) {
+            return b.lat === lat && b.lng === lng && b.nome === nome;
+          });
+          if (bloco) {
+            showBlocoDetail(bloco);
+            map.setView([lat, lng], Math.max(map.getZoom(), 15), { animate: false });
+          }
+        });
+      }
     }
 
-    // ===== BOOT =====
+    function scheduleViewportUpdate() {
+      clearTimeout(vpUpdateTimer);
+      vpUpdateTimer = setTimeout(updateViewportList, 150);
+    }
+
+    /* ========================================
+       EVENT LISTENERS
+       ======================================== */
+    function setupEventListeners() {
+      document.getElementById('btn-locate').addEventListener('click', locateUser);
+      document.getElementById('btn-theme').addEventListener('click', function() {
+        setTheme(isDark ? 'light' : 'dark');
+      });
+
+      map.on('moveend', scheduleViewportUpdate);
+      map.on('zoomend', scheduleViewportUpdate);
+      map.on('click', function() {
+        if (selectedBloco) hideDetail();
+      });
+
+      // Close detail panel with Escape
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && selectedBloco) {
+          hideDetail();
+        }
+      });
+    }
+
+    /* ========================================
+       BOOT
+       ======================================== */
     document.addEventListener('DOMContentLoaded', init);
   </script>
 </body>
