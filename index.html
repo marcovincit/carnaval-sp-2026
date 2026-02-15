@@ -329,18 +329,18 @@
 
     /* User location pulse */
     @keyframes pulse-ring {
-      0% { transform: translate(-50%, -50%) scale(1); opacity: 0.35; }
+      0% { transform: translate(-50%, -50%) scale(1); opacity: 0.7; }
       100% { transform: translate(-50%, -50%) scale(4); opacity: 0; }
     }
     .user-pulse-container { position: relative; width: 100%; height: 100%; }
     .user-ring-inner {
-      position: absolute; top: 50%; left: 50%; width: 22px; height: 22px;
-      background: rgba(0, 122, 255, 0.2); border-radius: 50%;
+      position: absolute; top: 50%; left: 50%; width: 26px; height: 26px;
+      background: rgba(0, 122, 255, 0.4); border-radius: 50%;
       transform: translate(-50%, -50%); animation: pulse-ring 1.5s ease-out infinite;
     }
     .user-ring-outer {
-      position: absolute; top: 50%; left: 50%; width: 22px; height: 22px;
-      background: rgba(0, 122, 255, 0.1); border-radius: 50%;
+      position: absolute; top: 50%; left: 50%; width: 26px; height: 26px;
+      background: rgba(0, 122, 255, 0.25); border-radius: 50%;
       transform: translate(-50%, -50%); animation: pulse-ring 2.5s ease-out infinite;
       animation-delay: 0.4s;
     }
@@ -871,7 +871,7 @@
           var btn = L.DomUtil.create('button', 'locate-map-btn');
           btn.id = 'btn-locate';
           btn.setAttribute('aria-label', 'Mostrar minha localização no mapa');
-          btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>';
+          btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm8.94 3A8.994 8.994 0 0013 3.06V1h-2v2.06A8.994 8.994 0 003.06 11H1v2h2.06A8.994 8.994 0 0011 20.94V23h2v-2.06A8.994 8.994 0 0020.94 13H23v-2h-2.06zM12 19c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"/></svg>';
           L.DomEvent.disableClickPropagation(btn);
           btn.addEventListener('click', function() { locateUser(); });
           return btn;
@@ -1301,7 +1301,7 @@
               zIndexOffset: 500
             }).addTo(map);
             userMarker = L.circleMarker(ll, {
-              radius: 7, fillColor: '#007AFF', fillOpacity: 1, weight: 0
+              radius: 9, fillColor: '#007AFF', fillOpacity: 1, weight: 3, color: '#ffffff'
             }).addTo(map);
           }
           map.setView(ll, 15, { animate: false });
