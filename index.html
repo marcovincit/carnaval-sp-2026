@@ -134,7 +134,17 @@
     .header h1 {
       font-size: var(--fs-body); font-weight: 600; letter-spacing: -0.2px;
     }
-    .header-actions { display: flex; align-items: center; gap: var(--sp-1); }
+    .locate-map-btn {
+      width: 44px !important; height: 44px !important;
+      border: none; border-radius: var(--r-md) !important;
+      background: var(--color-surface) !important;
+      color: var(--accent); cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      -webkit-tap-highlight-color: transparent;
+      margin-top: var(--sp-2) !important;
+    }
+    .locate-map-btn svg { width: 20px; height: 20px; }
+    .locate-map-btn.active { background: var(--accent) !important; color: var(--text-on-accent); }
     .icon-btn {
       width: 36px; height: 36px; border: none;
       background: var(--fill-secondary); border-radius: var(--r-full);
@@ -368,11 +378,6 @@
   <div id="chrome" role="banner">
     <header class="header">
       <h1>Carnaval SP 2026</h1>
-      <div class="header-actions">
-        <button id="btn-locate" class="icon-btn" aria-label="Mostrar minha localização no mapa">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
-        </button>
-      </div>
     </header>
 
     <nav id="date-filter" class="filter-row" role="toolbar" aria-label="Filtrar por data"></nav>
@@ -781,6 +786,11 @@
       return document.getElementById('chrome').offsetHeight;
     }
 
+    function updateMapTop() {
+      document.getElementById('map').style.top = getChromeHeight() + 'px';
+      if (map) map.invalidateSize();
+    }
+
     /* ========================================
        STATE
        ======================================== */
@@ -818,9 +828,11 @@
       initTheme();
       initMap();
       buildDateFilter();
+      updateMapTop();
       setupEventListeners();
       if (!autoSelectToday()) filterBlocos();
       locateUser(true);
+      window.addEventListener('resize', updateMapTop);
     }
 
     /* ========================================
@@ -852,6 +864,20 @@
       }
 
       L.control.zoom({ position: 'bottomright' }).addTo(map);
+
+      var LocateControl = L.Control.extend({
+        options: { position: 'bottomright' },
+        onAdd: function() {
+          var btn = L.DomUtil.create('button', 'locate-map-btn');
+          btn.id = 'btn-locate';
+          btn.setAttribute('aria-label', 'Mostrar minha localização no mapa');
+          btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>';
+          L.DomEvent.disableClickPropagation(btn);
+          btn.addEventListener('click', function() { locateUser(); });
+          return btn;
+        }
+      });
+      new LocateControl().addTo(map);
 
       tileLayer = L.tileLayer(isDark ? TILE_DARK : TILE_LIGHT, {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> &copy; <a href="https://carto.com/">CARTO</a>',
@@ -1358,8 +1384,6 @@
        EVENT LISTENERS
        ======================================== */
     function setupEventListeners() {
-      document.getElementById('btn-locate').addEventListener('click', locateUser);
-
       map.on('moveend', scheduleViewportUpdate);
       map.on('zoomend', scheduleViewportUpdate);
       map.on('click', function() {
