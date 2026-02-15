@@ -121,6 +121,8 @@
       display: flex; align-items: center; gap: 6px;
       min-height: var(--filter-h); padding: 2px var(--sp-4);
       overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+      -webkit-mask-image: linear-gradient(to right, transparent, black 16px, black calc(100% - 16px), transparent);
+      mask-image: linear-gradient(to right, transparent, black 16px, black calc(100% - 16px), transparent);
     }
     .filter-row::-webkit-scrollbar { display: none; }
 
@@ -159,7 +161,7 @@
 
     /* Separator (top edge of panels) */
     .has-separator::before {
-      content: ''; display: block; height: 1px;
+      content: ''; display: block; position: sticky; top: 0; left: 0;  height: 1px;
       background: var(--separator); margin-bottom: 6px;
     }
 
@@ -186,6 +188,8 @@
     }
     .vp-item:hover { background: var(--fill-secondary); }
     .vp-item:active { background: var(--fill); }
+    .vp-item.selected { background: var(--accent-bg); }
+    .vp-item.selected .vp-name { color: var(--accent); }
     .vp-time {
       font-size: 10px; font-weight: 600; color: var(--accent);
       margin-bottom: 3px; white-space: nowrap; line-height: 1;
@@ -316,8 +320,13 @@
       display: none; position: fixed; top: 50%; left: 50%;
       transform: translate(-50%, -50%); z-index: 500; text-align: center;
       color: var(--text-tertiary); font-size: var(--fs-subhead); font-weight: 500;
+      padding: var(--sp-4);
     }
-    .empty-state.visible { display: block; }
+    .empty-state.visible { display: flex; flex-direction: column; align-items: center; gap: var(--sp-2); }
+    .empty-state svg { width: 32px; height: 32px; opacity: 0.4; }
+    .empty-state .empty-hint {
+      font-size: var(--fs-footnote); font-weight: 400; margin-top: var(--sp-1);
+    }
   </style>
 </head>
 <body>
@@ -351,7 +360,11 @@
   <div id="map" role="application" aria-label="Mapa interativo de blocos de carnaval"></div>
 
   <div id="bloco-count" role="status" aria-live="polite"></div>
-  <div id="empty-state" class="empty-state" role="status" aria-live="polite">Nenhum bloco encontrado com esses filtros.</div>
+  <div id="empty-state" class="empty-state" role="status" aria-live="polite">
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+    <span>Nenhum bloco encontrado</span>
+    <span class="empty-hint">Tente mudar a data ou ativar mais tipos</span>
+  </div>
 
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
@@ -595,6 +608,7 @@
         pills[i].setAttribute('aria-pressed', 'false');
       }
       el.setAttribute('aria-pressed', 'true');
+      el.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
       hideDetail();
       filterBlocos();
     }
@@ -628,7 +642,12 @@
       // Update count
       var countEl = document.getElementById('bloco-count');
       var emptyEl = document.getElementById('empty-state');
-      countEl.textContent = filteredBlocos.length + ' bloco' + (filteredBlocos.length !== 1 ? 's' : '');
+      var countText = filteredBlocos.length + ' bloco' + (filteredBlocos.length !== 1 ? 's' : '');
+      if (currentDate) {
+        var cPts = currentDate.split('/');
+        countText += ' \u00b7 ' + cPts[0] + '/' + cPts[1];
+      }
+      countEl.textContent = countText;
 
       if (filteredBlocos.length === 0) {
         emptyEl.classList.add('visible');
@@ -693,16 +712,15 @@
           '<div class="detail-info">' +
             '<span class="tipo-badge" style="color:' + color + ';background:rgba(' + rgb + ',' + (isDark ? '0.2' : '0.12') + ')">' + bloco.tipo + '</span>' +
             '<h2>' + bloco.nome + '</h2>' +
-            '<p class="detail-bairro">' + bloco.bairro + '</p>' +
+            '<p class="detail-bairro">' + bloco.concentracao + ' \u00b7 ' + bloco.bairro + '</p>' +
           '</div>' +
           '<button class="icon-btn" aria-label="Fechar detalhes" onclick="hideDetail()" style="flex-shrink:0">' +
             '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" aria-hidden="true" style="width:14px;height:14px"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>' +
           '</button>' +
         '</div>' +
         '<div class="detail-meta">' +
-          '<span><span class="label">Data</span> ' + bloco.dia_semana + ', ' + pts[0] + '/' + pts[1] + '</span>' +
+          '<span><span class="label">' + bloco.dia_semana + '</span> ' + pts[0] + '/' + pts[1] + '</span>' +
           '<span><span class="label">Hora</span> ' + horarioStr + '</span>' +
-          '<span><span class="label">Local</span> ' + bloco.concentracao + '</span>' +
         '</div>' +
         '<div class="detail-actions">' +
           (hasRoute ? '<button id="btn-route" onclick="toggleRoute()">Ver trajeto <span aria-hidden="true">\u2192</span></button>' : '') +
@@ -934,8 +952,11 @@
       if (selectedBloco) return;
 
       var bounds = map.getBounds();
+      var chromeH = getChromeHeight();
       var visible = filteredBlocos.filter(function(b) {
-        return bounds.contains([b.lat, b.lng]);
+        if (!bounds.contains([b.lat, b.lng])) return false;
+        var pt = map.latLngToContainerPoint([b.lat, b.lng]);
+        return pt.y > chromeH;
       });
       visible.sort(function(a, b) {
         return a.horario < b.horario ? -1 : a.horario > b.horario ? 1 : a.nome.localeCompare(b.nome);
@@ -950,13 +971,11 @@
       var html = '';
       visible.forEach(function(b) {
         var color = TYPE_COLORS[b.tipo] || '#6B7280';
-        var time = b.horario;
-        if (b.horario_fim) time += '\u2013' + b.horario_fim;
         html += '<button class="vp-item" role="listitem" data-lat="' + b.lat +
                 '" data-lng="' + b.lng +
                 '" data-nome="' + b.nome.replace(/"/g, '&quot;') +
-                '" aria-label="' + b.nome.replace(/"/g, '&quot;') + ', ' + b.bairro + ', ' + time + '">' +
-                '<span class="vp-time" aria-hidden="true">' + time + '</span>' +
+                '" aria-label="' + b.nome.replace(/"/g, '&quot;') + ', ' + b.bairro + ', ' + b.horario + '">' +
+                '<span class="vp-time" aria-hidden="true">' + b.horario + '</span>' +
                 '<span class="vp-dot" style="background:' + color + '" aria-hidden="true"></span>' +
                 '<span class="vp-name">' + b.nome + '</span>' +
                 '<span class="vp-sub">' + b.bairro + '</span>' +
@@ -969,13 +988,16 @@
       var items = container.querySelectorAll('.vp-item');
       for (var i = 0; i < items.length; i++) {
         items[i].addEventListener('click', function() {
-          var lat = parseFloat(this.dataset.lat);
-          var lng = parseFloat(this.dataset.lng);
-          var nome = this.dataset.nome;
+          var el = this;
+          var lat = parseFloat(el.dataset.lat);
+          var lng = parseFloat(el.dataset.lng);
+          var nome = el.dataset.nome;
           var bloco = filteredBlocos.find(function(b) {
             return b.lat === lat && b.lng === lng && b.nome === nome;
           });
           if (bloco) {
+            for (var j = 0; j < items.length; j++) items[j].classList.remove('selected');
+            el.classList.add('selected');
             showBlocoDetail(bloco);
             map.setView([lat, lng], Math.max(map.getZoom(), 15), { animate: false });
           }
