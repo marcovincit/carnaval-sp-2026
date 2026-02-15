@@ -233,17 +233,20 @@
     }
     .detail-meta span { display: inline-flex; align-items: center; gap: 3px; }
     .detail-meta .label { color: var(--text-tertiary); font-weight: 500; }
-    #btn-route {
+    .detail-actions { display: flex; gap: var(--sp-2); margin-top: var(--sp-3); flex-wrap: wrap; }
+    .detail-actions button {
       display: inline-flex; align-items: center; gap: 5px;
-      margin-top: var(--sp-3); padding: var(--sp-2) var(--sp-4); border: none;
-      background: var(--accent); color: var(--text-on-accent);
+      padding: var(--sp-2) var(--sp-4); border: none;
       font-family: var(--font); font-size: var(--fs-footnote); font-weight: 600;
       border-radius: var(--r-full); cursor: pointer;
       -webkit-tap-highlight-color: transparent;
     }
+    #btn-route { background: var(--accent); color: var(--text-on-accent); }
     #btn-route:hover { filter: brightness(1.08); }
     #btn-route.active { background: var(--success); }
     #btn-route:disabled { opacity: 0.5; cursor: not-allowed; }
+    #btn-calendar { background: var(--fill-secondary); color: var(--text-primary); }
+    #btn-calendar:hover { background: var(--fill); }
 
     /* Count badge */
     #bloco-count {
@@ -683,7 +686,10 @@
           '<span><span class="label">Hora</span> ' + horarioStr + '</span>' +
           '<span><span class="label">Local</span> ' + bloco.concentracao + '</span>' +
         '</div>' +
-        (hasRoute ? '<button id="btn-route" onclick="toggleRoute()">Ver trajeto <span aria-hidden="true">\u2192</span></button>' : '');
+        '<div class="detail-actions">' +
+          (hasRoute ? '<button id="btn-route" onclick="toggleRoute()">Ver trajeto <span aria-hidden="true">\u2192</span></button>' : '') +
+          '<button id="btn-calendar" onclick="addToCalendar()"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true" style="width:16px;height:16px"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg>Adicionar ao calend\u00e1rio</button>' +
+        '</div>';
 
       document.getElementById('viewport-list').classList.remove('visible');
       panel.classList.add('visible');
@@ -785,6 +791,77 @@
       if (activeRoute) { map.removeLayer(activeRoute); activeRoute = null; }
       activeRouteMarkers.forEach(function(m) { map.removeLayer(m); });
       activeRouteMarkers = [];
+    }
+
+    /* ========================================
+       ADD TO CALENDAR
+       ======================================== */
+    function addToCalendar() {
+      if (!selectedBloco) return;
+      var b = selectedBloco;
+      var pts = b.dia.split('/');
+      var year = pts[2], month = pts[1], day = pts[0];
+
+      // Start time
+      var hStart = b.horario.split(':');
+      var dtStart = year + month + day + 'T' + hStart[0] + hStart[1] + '00';
+
+      // End time: use horario_fim if available, otherwise +3h
+      var dtEnd;
+      if (b.horario_fim) {
+        var hEnd = b.horario_fim.split(':');
+        dtEnd = year + month + day + 'T' + hEnd[0] + hEnd[1] + '00';
+      } else {
+        var startDate = new Date(+year, +month - 1, +day, +hStart[0], +hStart[1]);
+        startDate.setHours(startDate.getHours() + 3);
+        dtEnd = year + month + day + 'T' +
+          String(startDate.getHours()).padStart(2, '0') +
+          String(startDate.getMinutes()).padStart(2, '0') + '00';
+      }
+
+      var title = encodeURIComponent(b.nome + ' - Carnaval SP 2026');
+      var location = encodeURIComponent(b.concentracao + ', ' + b.bairro + ', S\u00e3o Paulo');
+      var details = encodeURIComponent('Bloco: ' + b.nome + '\nTipo: ' + b.tipo + '\nConcentra\u00e7\u00e3o: ' + b.concentracao);
+
+      // Google Calendar URL
+      var googleUrl = 'https://calendar.google.com/calendar/render?action=TEMPLATE' +
+        '&text=' + title +
+        '&dates=' + dtStart + '/' + dtEnd +
+        '&ctz=America/Sao_Paulo' +
+        '&location=' + location +
+        '&details=' + details;
+
+      // .ics file content (Apple Calendar, Outlook, etc.)
+      var ics = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'PRODID:-//CarnavalSP2026//PT',
+        'BEGIN:VEVENT',
+        'DTSTART;TZID=America/Sao_Paulo:' + dtStart,
+        'DTEND;TZID=America/Sao_Paulo:' + dtEnd,
+        'SUMMARY:' + b.nome + ' - Carnaval SP 2026',
+        'LOCATION:' + b.concentracao + ', ' + b.bairro + ', S\u00e3o Paulo',
+        'DESCRIPTION:Bloco: ' + b.nome + '\\nTipo: ' + b.tipo + '\\nConcentra\u00e7\u00e3o: ' + b.concentracao,
+        'END:VEVENT',
+        'END:VCALENDAR'
+      ].join('\r\n');
+
+      // Detect platform: iOS/macOS → .ics, otherwise → Google Calendar
+      var isApple = /Mac|iPhone|iPad|iPod/.test(navigator.userAgent);
+
+      if (isApple) {
+        var blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = b.nome.replace(/[^a-zA-Z0-9\u00C0-\u017F ]/g, '').replace(/\s+/g, '_') + '.ics';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      } else {
+        window.open(googleUrl, '_blank', 'noopener');
+      }
     }
 
     /* ========================================
