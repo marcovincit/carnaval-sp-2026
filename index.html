@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#ffffff" id="meta-theme">
   <meta name="description" content="Mapa interativo dos blocos de Carnaval de rua de São Paulo 2026. Encontre blocos por data, tipo e localização.">
   <title>Blocos de Carnaval SP 2026</title>
@@ -12,11 +12,14 @@
   <style>
     :root {
       --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-5: 20px;
+      --sal: env(safe-area-inset-left, 0px);
+      --sar: env(safe-area-inset-right, 0px);
       --header-h: 44px;
       --filter-h: 36px;
       --sat: env(safe-area-inset-top, 0px);
       --sab: env(safe-area-inset-bottom, 0px);
       --font: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', system-ui, sans-serif;
+      --fs-caption3: 10px;
       --fs-caption2: 11px;
       --fs-caption1: 12px;
       --fs-footnote: 13px;
@@ -90,6 +93,7 @@
     #chrome {
       position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
       padding-top: var(--sat);
+      padding-bottom: 8px;
       background: var(--color-surface);
       -webkit-backdrop-filter: var(--blur); backdrop-filter: var(--blur);
     }
@@ -100,7 +104,7 @@
     .header h1 {
       font-size: var(--fs-body); font-weight: 600; letter-spacing: -0.2px;
     }
-    .header-actions { display: flex; align-items: center; gap: var(--sp-3); }
+    .header-actions { display: flex; align-items: center; gap: var(--sp-1); }
     .icon-btn {
       width: 36px; height: 36px; border: none;
       background: var(--fill-secondary); border-radius: var(--r-full);
@@ -118,8 +122,8 @@
 
     /* Filters */
     .filter-row {
-      display: flex; align-items: center; gap: 6px;
-      min-height: var(--filter-h); padding: 2px var(--sp-4);
+      display: flex; align-items: center; gap: var(--sp-1);
+      min-height: var(--filter-h); padding: var(--sp-1) var(--sp-4);
       overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;
       -webkit-mask-image: linear-gradient(to right, transparent, black 16px, black calc(100% - 16px), transparent);
       mask-image: linear-gradient(to right, transparent, black 16px, black calc(100% - 16px), transparent);
@@ -127,8 +131,8 @@
     .filter-row::-webkit-scrollbar { display: none; }
 
     .type-chip {
-      display: inline-flex; align-items: center; gap: 5px;
-      padding: 7px 12px; border-radius: var(--r-full); border: none;
+      display: inline-flex; align-items: center; gap: var(--sp-1);
+      padding: var(--sp-2) var(--sp-3); border-radius: var(--r-full); border: none;
       background: var(--fill-secondary); cursor: pointer; min-height: 36px;
       font-family: var(--font); font-size: var(--fs-caption1); font-weight: 500;
       color: var(--text-primary); user-select: none;
@@ -140,7 +144,7 @@
 
     .date-pill {
       display: inline-flex; flex-direction: column; align-items: center;
-      padding: 6px 12px; border-radius: var(--r-sm); border: none;
+      padding: var(--sp-2) var(--sp-3); border-radius: var(--r-lg); border: none;
       background: var(--fill-secondary); cursor: pointer; min-width: 48px; min-height: 36px;
       font-family: var(--font); user-select: none;
       -webkit-tap-highlight-color: transparent; flex-shrink: 0;
@@ -153,7 +157,7 @@
       color: var(--text-primary); line-height: 1.35;
     }
     .date-pill .day-num {
-      font-size: 10px; color: var(--text-tertiary);
+      font-size: var(--fs-caption3); color: var(--text-tertiary);
       line-height: 1.35; font-weight: 500;
     }
     .date-pill[aria-pressed="true"] .day-name,
@@ -162,7 +166,7 @@
     /* Separator (top edge of panels) */
     .has-separator::before {
       content: ''; display: block; position: sticky; top: 0; left: 0;  height: 1px;
-      background: var(--separator); margin-bottom: 6px;
+      background: var(--separator); margin-bottom: var(--sp-2);
     }
 
     /* Viewport list */
@@ -170,7 +174,7 @@
       position: fixed; left: 0; right: 0; z-index: 999;
       overflow-x: auto; overflow-y: visible;
       -webkit-overflow-scrolling: touch; scrollbar-width: none;
-      white-space: nowrap; padding: 6px var(--sp-4) var(--sp-2);
+      white-space: nowrap; padding: 0 var(--sp-4);
       background: var(--color-surface);
       -webkit-backdrop-filter: var(--blur); backdrop-filter: var(--blur);
       display: none;
@@ -181,7 +185,7 @@
     .vp-item {
       display: inline-flex; flex-direction: column; align-items: center;
       width: 76px; padding: var(--sp-3) var(--sp-2);
-      border-radius: var(--r-md); cursor: pointer;
+      border-radius: var(--r-lg); cursor: pointer;
       -webkit-tap-highlight-color: transparent;
       vertical-align: top; white-space: normal; text-align: center;
       border: none; background: none; font-family: var(--font);
@@ -191,11 +195,11 @@
     .vp-item.selected { background: var(--accent-bg); }
     .vp-item.selected .vp-name { color: var(--accent); }
     .vp-time {
-      font-size: 10px; font-weight: 600; color: var(--accent);
-      margin-bottom: 3px; white-space: nowrap; line-height: 1;
+      font-size: var(--fs-caption3); font-weight: 600; color: var(--accent);
+      margin-bottom: var(--sp-1); white-space: nowrap; line-height: 1;
       letter-spacing: 0.1px;
     }
-    .vp-dot { width: 10px; height: 10px; border-radius: var(--r-full); margin-bottom: 3px; }
+    .vp-dot { width: 10px; height: 10px; border-radius: var(--r-full); margin-bottom: var(--sp-1); }
     .vp-name {
       font-size: var(--fs-caption2); font-weight: 500;
       color: var(--text-primary); line-height: 1.2;
@@ -203,8 +207,8 @@
       overflow: hidden; text-overflow: ellipsis; word-break: break-word;
     }
     .vp-sub {
-      font-size: 10px; color: var(--text-tertiary); line-height: 1.2;
-      margin-top: 1px; white-space: nowrap; overflow: hidden;
+      font-size: var(--fs-caption3); color: var(--text-tertiary); line-height: 1.2;
+      margin-top: 2px; white-space: nowrap; overflow: hidden;
       text-overflow: ellipsis; max-width: 100%; font-weight: 400;
     }
 
@@ -213,7 +217,7 @@
       position: fixed; left: 0; right: 0; z-index: 1001;
       background: var(--color-surface);
       -webkit-backdrop-filter: var(--blur); backdrop-filter: var(--blur);
-      padding: 6px var(--sp-4) var(--sp-4);
+      padding: 0 var(--sp-4) calc(var(--sp-4) + var(--sab));
       display: none; overflow-y: auto; max-height: 45vh;
     }
     #detail-panel.visible { display: block; }
@@ -221,17 +225,17 @@
     .detail-header {
       display: flex; align-items: flex-start;
       justify-content: space-between; gap: var(--sp-3);
-      padding-top: var(--sp-3);
+
     }
     .detail-info { flex: 1; min-width: 0; }
     .tipo-badge {
-      display: inline-block; font-size: 10px; font-weight: 600;
+      display: inline-block; font-size: var(--fs-caption3); font-weight: 600;
       text-transform: uppercase; letter-spacing: 0.4px;
-      margin-bottom: var(--sp-1); padding: 2px 6px; border-radius: 4px;
+      margin-bottom: var(--sp-1); padding: 2px var(--sp-2); border-radius: var(--sp-1);
     }
     #detail-panel h2 {
       font-size: var(--fs-body); font-weight: 600;
-      margin-bottom: 1px; line-height: 1.25; letter-spacing: -0.2px;
+      margin-bottom: 2px; line-height: 1.25; letter-spacing: -0.2px;
     }
     .detail-bairro {
       font-size: var(--fs-footnote); color: var(--text-tertiary);
@@ -240,12 +244,13 @@
     .detail-meta {
       display: flex; flex-wrap: wrap; gap: var(--sp-1) var(--sp-4);
       font-size: var(--fs-footnote); color: var(--text-primary);
+      border-top: 1px solid var(--separator); padding-top: var(--sp-3);
     }
-    .detail-meta span { display: inline-flex; align-items: center; gap: 3px; }
+    .detail-meta span { display: inline-flex; align-items: center; gap: var(--sp-1); }
     .detail-meta .label { color: var(--text-tertiary); font-weight: 500; }
     .detail-actions { display: flex; gap: var(--sp-2); margin-top: var(--sp-3); flex-wrap: wrap; }
     .detail-actions button {
-      display: inline-flex; align-items: center; gap: 5px;
+      display: inline-flex; align-items: center; gap: var(--sp-2);
       padding: var(--sp-3) var(--sp-5); border: none; min-height: 44px;
       font-family: var(--font); font-size: var(--fs-footnote); font-weight: 600;
       border-radius: var(--r-full); cursor: pointer;
@@ -260,10 +265,10 @@
 
     /* Count badge */
     #bloco-count {
-      position: fixed; bottom: calc(var(--sp-3) + var(--sab)); left: var(--sp-3);
+      position: fixed; bottom: calc(var(--sp-3) + var(--sab)); left: calc(var(--sp-3) + var(--sal));
       z-index: 1000; background: var(--color-surface);
       -webkit-backdrop-filter: var(--blur); backdrop-filter: var(--blur);
-      padding: 6px var(--sp-3); border-radius: var(--r-full);
+      padding: var(--sp-2) var(--sp-3); border-radius: var(--r-full);
       font-size: var(--fs-caption1); font-weight: 600; color: var(--text-primary);
     }
 
@@ -272,8 +277,8 @@
     .bloco-tooltip {
       background: var(--tooltip-bg);
       -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
-      border: none; border-radius: 5px; padding: 3px 8px;
-      font-size: 10px; font-weight: 600; color: var(--text-primary); white-space: nowrap;
+      border: none; border-radius: var(--r-sm); padding: var(--sp-1) var(--sp-2);
+      font-size: var(--fs-caption3); font-weight: 600; color: var(--text-primary); white-space: nowrap;
     }
     .bloco-tooltip::before { display: none; }
     .custom-cluster { background: none !important; border: none !important; }
@@ -286,6 +291,7 @@
     .leaflet-control-zoom {
       border: none !important; box-shadow: none !important;
       border-radius: var(--r-md) !important; overflow: hidden;
+      margin-right: calc(10px + var(--sar)) !important;
     }
     .leaflet-control-zoom a {
       width: 44px !important; height: 44px !important; line-height: 44px !important;
@@ -715,7 +721,7 @@
             '<p class="detail-bairro">' + bloco.concentracao + ' \u00b7 ' + bloco.bairro + '</p>' +
           '</div>' +
           '<button class="icon-btn" aria-label="Fechar detalhes" onclick="hideDetail()" style="flex-shrink:0">' +
-            '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" aria-hidden="true" style="width:14px;height:14px"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>' +
+            '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" aria-hidden="true" style="width:16px;height:16px"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>' +
           '</button>' +
         '</div>' +
         '<div class="detail-meta">' +
