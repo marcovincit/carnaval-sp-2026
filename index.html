@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#ffffff" id="meta-theme">
   <script>
     (function(){var m=document.getElementById('meta-theme');
-    function u(){m.content=window.matchMedia('(prefers-color-scheme:dark)').matches?'#1c1c1e':'#ffffff'}
+    function u(){m.content=window.matchMedia('(prefers-color-scheme:dark)').matches?'#000000':'#ffffff'}
     u();window.matchMedia('(prefers-color-scheme:dark)').addEventListener('change',u);})();
   </script>
   <meta name="description" content="Mapa interativo com 327+ blocos de Carnaval de rua de São Paulo 2026. Datas, horários, trajetos e localização. Pré-carnaval, carnaval e pós-carnaval.">
@@ -55,10 +55,9 @@
       --fs-subhead: 15px;
       --fs-body: 17px;
       --fs-title3: 20px;
-      --color-bg: #f2f2f7;
-      --color-surface: rgba(255, 255, 255, 0.82);
+      --color-bg: #ffffff;
+      --color-surface: #ffffff;
       --color-surface-solid: #ffffff;
-      --blur: saturate(180%) blur(20px);
       --text-primary: #000000;
       --text-secondary: #3c3c43;
       --text-tertiary: #8e8e93;
@@ -70,15 +69,15 @@
       --fill-secondary: rgba(120, 120, 128, 0.08);
       --fill-hover: rgba(120, 120, 128, 0.2);
       --focus-ring: 0 0 0 3px rgba(0, 122, 255, 0.35);
-      --tooltip-bg: rgba(255, 255, 255, 0.92);
+      --tooltip-bg: #ffffff;
       --separator: rgba(60, 60, 67, 0.12);
       --r-sm: 8px; --r-md: 10px; --r-lg: 14px; --r-full: 9999px;
     }
     @media (prefers-color-scheme: dark) {
       :root {
         --color-bg: #000000;
-        --color-surface: rgba(30, 30, 30, 0.82);
-        --color-surface-solid: #1c1c1e;
+        --color-surface: #000000;
+        --color-surface-solid: #000000;
         --text-primary: #ffffff;
         --text-secondary: #ebebf5;
         --text-tertiary: #8e8e93;
@@ -89,7 +88,7 @@
         --fill-secondary: rgba(120, 120, 128, 0.24);
         --fill-hover: rgba(120, 120, 128, 0.48);
         --focus-ring: 0 0 0 3px rgba(10, 132, 255, 0.45);
-        --tooltip-bg: rgba(44, 44, 46, 0.92);
+        --tooltip-bg: #000000;
         --separator: rgba(84, 84, 88, 0.36);
       }
     }
@@ -126,7 +125,6 @@
       padding-top: var(--sat);
       padding-bottom: 8px;
       background: var(--color-surface);
-      -webkit-backdrop-filter: var(--blur); backdrop-filter: var(--blur);
     }
     .header {
       display: flex; align-items: center; justify-content: space-between;
@@ -207,7 +205,6 @@
       -webkit-overflow-scrolling: touch; scrollbar-width: none;
       white-space: nowrap; padding: 0 var(--sp-4) var(--sp-2);
       background: var(--color-surface);
-      -webkit-backdrop-filter: var(--blur); backdrop-filter: var(--blur);
       display: none;
     }
     #viewport-list::-webkit-scrollbar { display: none; }
@@ -247,7 +244,6 @@
     #detail-panel {
       position: fixed; left: 0; right: 0; z-index: 1001;
       background: var(--color-surface);
-      -webkit-backdrop-filter: var(--blur); backdrop-filter: var(--blur);
       padding: 0 var(--sp-4) calc(var(--sp-4) + var(--sab));
       display: none; overflow-y: auto; max-height: 45vh;
     }
@@ -298,7 +294,6 @@
     #bloco-count {
       position: fixed; bottom: calc(var(--sp-3) + var(--sab)); left: calc(var(--sp-3) + var(--sal));
       z-index: 1000; background: var(--color-surface);
-      -webkit-backdrop-filter: var(--blur); backdrop-filter: var(--blur);
       padding: var(--sp-2) var(--sp-3); border-radius: var(--r-full);
       font-size: var(--fs-caption1); font-weight: 600; color: var(--text-primary);
     }
@@ -307,7 +302,6 @@
     .bloco-marker { background: none !important; border: none !important; }
     .bloco-tooltip {
       background: var(--tooltip-bg);
-      -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
       border: none; border-radius: var(--r-sm); padding: var(--sp-1) var(--sp-2);
       font-size: var(--fs-caption3); font-weight: 600; color: var(--text-primary); white-space: nowrap;
     }
@@ -331,7 +325,7 @@
     }
     @media (prefers-color-scheme: dark) {
       .leaflet-control-attribution {
-        background: rgba(28, 28, 30, 0.75) !important; color: var(--text-tertiary) !important;
+        background: #000000 !important; color: var(--text-tertiary) !important;
       }
       .leaflet-control-attribution a { color: var(--accent) !important; }
     }
@@ -836,7 +830,7 @@
        ======================================== */
     function setTheme(t) {
       isDark = t === 'dark';
-      document.getElementById('meta-theme').content = isDark ? '#1c1c1e' : '#ffffff';
+      document.getElementById('meta-theme').content = isDark ? '#000000' : '#ffffff';
       if (tileLayer) tileLayer.setUrl(isDark ? TILE_DARK : TILE_LIGHT);
     }
 
