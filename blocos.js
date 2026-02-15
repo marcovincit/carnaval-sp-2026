@@ -16,7 +16,7 @@ const BLOCOS_DATA = {
       "horario": "20:00",
       "horario_fim": "22:00",
       "concentracao": "Butantã",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.5719,
       "lng": -46.70809,
       "trajeto_aproximado": []
@@ -29,7 +29,7 @@ const BLOCOS_DATA = {
       "horario": "17:00",
       "horario_fim": "18:00",
       "concentracao": "Brás",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.545114,
       "lng": -46.616335,
       "trajeto_aproximado": []
@@ -42,7 +42,7 @@ const BLOCOS_DATA = {
       "horario": "15:00",
       "horario_fim": "18:00",
       "concentracao": "Vila Isolina Mazzei",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.494265,
       "lng": -46.61,
       "trajeto_aproximado": []
@@ -55,7 +55,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Vila Palmeiras",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.495918,
       "lng": -46.687389,
       "trajeto_aproximado": []
@@ -68,7 +68,7 @@ const BLOCOS_DATA = {
       "horario": "16:00",
       "horario_fim": "17:00",
       "concentracao": "Mooca",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.563117,
       "lng": -46.596926,
       "trajeto_aproximado": []
@@ -81,7 +81,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "17:00",
       "concentracao": "Vila Esperança",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.529305,
       "lng": -46.51664,
       "trajeto_aproximado": []
@@ -94,7 +94,7 @@ const BLOCOS_DATA = {
       "horario": "13:00",
       "horario_fim": "17:00",
       "concentracao": "Mooca",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.563117,
       "lng": -46.596926,
       "trajeto_aproximado": []
@@ -120,7 +120,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Itaim Bibi",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.608319,
       "lng": -46.696407,
       "trajeto_aproximado": []
@@ -133,7 +133,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Penha da França",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.522668,
       "lng": -46.546147,
       "trajeto_aproximado": []
@@ -146,7 +146,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Parque Edu Chaves",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.480399,
       "lng": -46.566212,
       "trajeto_aproximado": []
@@ -159,7 +159,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Vila Palmeiras",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.495918,
       "lng": -46.687389,
       "trajeto_aproximado": []
@@ -172,7 +172,7 @@ const BLOCOS_DATA = {
       "horario": "10:00",
       "horario_fim": "15:00",
       "concentracao": "Vila Mariana",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.589178,
       "lng": -46.634668,
       "trajeto_aproximado": []
@@ -185,7 +185,7 @@ const BLOCOS_DATA = {
       "horario": "15:00",
       "horario_fim": "18:00",
       "concentracao": "Mooca",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.563117,
       "lng": -46.596926,
       "trajeto_aproximado": []
@@ -198,7 +198,7 @@ const BLOCOS_DATA = {
       "horario": "15:00",
       "horario_fim": "18:00",
       "concentracao": "Santa Terezinha",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.516618,
       "lng": -46.847957,
       "trajeto_aproximado": []
@@ -211,7 +211,7 @@ const BLOCOS_DATA = {
       "horario": "16:00",
       "horario_fim": "20:00",
       "concentracao": "Cambuci",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.567302,
       "lng": -46.618471,
       "trajeto_aproximado": []
@@ -237,7 +237,7 @@ const BLOCOS_DATA = {
       "horario": "16:00",
       "horario_fim": "18:00",
       "concentracao": "Vila Clementino",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.612004,
       "lng": -46.660314,
       "trajeto_aproximado": []
@@ -250,7 +250,7 @@ const BLOCOS_DATA = {
       "horario": "15:00",
       "horario_fim": "18:00",
       "concentracao": "Freguesia/Brasilândia",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.477532,
       "lng": -46.700893,
       "trajeto_aproximado": []
@@ -263,7 +263,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Vila Invernada",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.404435,
       "lng": -46.482948,
       "trajeto_aproximado": []
@@ -276,7 +276,7 @@ const BLOCOS_DATA = {
       "horario": "13:00",
       "horario_fim": "16:00",
       "concentracao": "Parque São Lourenço",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.74421,
       "lng": -46.799453,
       "trajeto_aproximado": []
@@ -289,7 +289,7 @@ const BLOCOS_DATA = {
       "horario": "12:00",
       "horario_fim": "16:00",
       "concentracao": "Itaim Bibi",
-      "tipo": "Tradicional",
+      "tipo": "Megabloco",
       "lat": -23.608319,
       "lng": -46.696407,
       "trajeto_aproximado": []
@@ -302,7 +302,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Ipiranga",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.594535,
       "lng": -46.602669,
       "trajeto_aproximado": []
@@ -328,7 +328,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Parque São Jorge",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.529968,
       "lng": -46.566067,
       "trajeto_aproximado": []
@@ -341,7 +341,7 @@ const BLOCOS_DATA = {
       "horario": "15:00",
       "horario_fim": "18:00",
       "concentracao": "Vila Monumento",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.568878,
       "lng": -46.609506,
       "trajeto_aproximado": []
@@ -354,7 +354,7 @@ const BLOCOS_DATA = {
       "horario": "17:00",
       "horario_fim": "18:00",
       "concentracao": "Vila Marilena",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.426975,
       "lng": -46.501607,
       "trajeto_aproximado": []
@@ -380,7 +380,7 @@ const BLOCOS_DATA = {
       "horario": "15:00",
       "horario_fim": "18:00",
       "concentracao": "Jardim Maristela",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.489252,
       "lng": -46.748821,
       "trajeto_aproximado": []
@@ -393,7 +393,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Vila Mariana",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.589178,
       "lng": -46.634668,
       "trajeto_aproximado": []
@@ -406,7 +406,7 @@ const BLOCOS_DATA = {
       "horario": "10:00",
       "horario_fim": "13:00",
       "concentracao": "Vila Mariana",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.589178,
       "lng": -46.634668,
       "trajeto_aproximado": []
@@ -419,7 +419,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Vila Gomes Cardim",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.547155,
       "lng": -46.5647,
       "trajeto_aproximado": []
@@ -432,7 +432,7 @@ const BLOCOS_DATA = {
       "horario": "13:00",
       "horario_fim": "15:00",
       "concentracao": "Vila Mariana",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.589178,
       "lng": -46.634668,
       "trajeto_aproximado": []
@@ -445,7 +445,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Imirim",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.492899,
       "lng": -46.648475,
       "trajeto_aproximado": []
@@ -458,7 +458,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Parque São Lourenço",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.74421,
       "lng": -46.799453,
       "trajeto_aproximado": []
@@ -471,7 +471,7 @@ const BLOCOS_DATA = {
       "horario": "15:00",
       "horario_fim": "18:00",
       "concentracao": "Jardim Scyntila",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.442873,
       "lng": -46.506187,
       "trajeto_aproximado": []
@@ -497,7 +497,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Pinheiros",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.567215,
       "lng": -46.701952,
       "trajeto_aproximado": []
@@ -510,7 +510,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Parque Peruche",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.497543,
       "lng": -46.655025,
       "trajeto_aproximado": []
@@ -536,7 +536,7 @@ const BLOCOS_DATA = {
       "horario": "17:00",
       "horario_fim": "18:00",
       "concentracao": "Cidade Tiradentes",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.581347,
       "lng": -46.405403,
       "trajeto_aproximado": []
@@ -549,7 +549,7 @@ const BLOCOS_DATA = {
       "horario": "13:00",
       "horario_fim": "18:00",
       "concentracao": "Imirim",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.492899,
       "lng": -46.648475,
       "trajeto_aproximado": []
@@ -562,7 +562,7 @@ const BLOCOS_DATA = {
       "horario": "15:00",
       "horario_fim": "18:00",
       "concentracao": "Itaim Bibi",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.608319,
       "lng": -46.696407,
       "trajeto_aproximado": []
@@ -575,7 +575,7 @@ const BLOCOS_DATA = {
       "horario": "12:00",
       "horario_fim": "16:00",
       "concentracao": "Jardim Europa",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.573705,
       "lng": -46.682307,
       "trajeto_aproximado": []
@@ -588,7 +588,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Limão",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.504148,
       "lng": -46.670804,
       "trajeto_aproximado": []
@@ -614,7 +614,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "São João Clímaco",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.628554,
       "lng": -46.59471,
       "trajeto_aproximado": []
@@ -627,7 +627,7 @@ const BLOCOS_DATA = {
       "horario": "16:00",
       "horario_fim": "18:00",
       "concentracao": "Butantã",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.5719,
       "lng": -46.70809,
       "trajeto_aproximado": []
@@ -640,7 +640,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Jardim Nordeste",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.533109,
       "lng": -46.484504,
       "trajeto_aproximado": []
@@ -653,7 +653,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Pinheiros",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.567215,
       "lng": -46.701952,
       "trajeto_aproximado": []
@@ -679,7 +679,7 @@ const BLOCOS_DATA = {
       "horario": "15:00",
       "horario_fim": "18:00",
       "concentracao": "Pinheiros",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.567215,
       "lng": -46.701952,
       "trajeto_aproximado": []
@@ -692,7 +692,7 @@ const BLOCOS_DATA = {
       "horario": "10:00",
       "horario_fim": "14:00",
       "concentracao": "Vila Carrão",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.564248,
       "lng": -46.522234,
       "trajeto_aproximado": []
@@ -705,7 +705,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Planalto Paulista",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.612004,
       "lng": -46.660314,
       "trajeto_aproximado": []
@@ -718,7 +718,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Pinheiros",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.567215,
       "lng": -46.701952,
       "trajeto_aproximado": []
@@ -731,7 +731,7 @@ const BLOCOS_DATA = {
       "horario": "15:00",
       "horario_fim": "18:00",
       "concentracao": "Pinheiros",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.567215,
       "lng": -46.701952,
       "trajeto_aproximado": []
@@ -744,7 +744,7 @@ const BLOCOS_DATA = {
       "horario": "15:00",
       "horario_fim": "18:00",
       "concentracao": "Ipiranga",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.594535,
       "lng": -46.602669,
       "trajeto_aproximado": []
@@ -757,7 +757,7 @@ const BLOCOS_DATA = {
       "horario": "16:00",
       "horario_fim": "18:00",
       "concentracao": "Conjunto Residencial José Bonifácio",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.545036,
       "lng": -46.435785,
       "trajeto_aproximado": []
@@ -770,7 +770,7 @@ const BLOCOS_DATA = {
       "horario": "15:00",
       "horario_fim": "18:00",
       "concentracao": "Cidade Patriarca",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.539093,
       "lng": -46.503929,
       "trajeto_aproximado": []
@@ -783,7 +783,7 @@ const BLOCOS_DATA = {
       "horario": "15:00",
       "horario_fim": "18:00",
       "concentracao": "Parada Inglesa",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.487019,
       "lng": -46.608842,
       "trajeto_aproximado": []
@@ -796,7 +796,7 @@ const BLOCOS_DATA = {
       "horario": "12:00",
       "horario_fim": "15:00",
       "concentracao": "Pinheiros",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.567215,
       "lng": -46.701952,
       "trajeto_aproximado": []
@@ -809,7 +809,7 @@ const BLOCOS_DATA = {
       "horario": "09:00",
       "horario_fim": "13:00",
       "concentracao": "Jardim Anália Franco",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.55374,
       "lng": -46.563413,
       "trajeto_aproximado": []
@@ -822,7 +822,7 @@ const BLOCOS_DATA = {
       "horario": "10:00",
       "horario_fim": "14:00",
       "concentracao": "Ipiranga",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.594535,
       "lng": -46.602669,
       "trajeto_aproximado": []
@@ -835,7 +835,7 @@ const BLOCOS_DATA = {
       "horario": "16:00",
       "horario_fim": "18:00",
       "concentracao": "Vila Olímpia",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.593369,
       "lng": -46.692732,
       "trajeto_aproximado": []
@@ -848,7 +848,7 @@ const BLOCOS_DATA = {
       "horario": "12:00",
       "horario_fim": "16:00",
       "concentracao": "Pinheiros",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.567215,
       "lng": -46.701952,
       "trajeto_aproximado": []
@@ -861,7 +861,7 @@ const BLOCOS_DATA = {
       "horario": "13:00",
       "horario_fim": "17:00",
       "concentracao": "Penha da França",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.522668,
       "lng": -46.546147,
       "trajeto_aproximado": []
@@ -874,7 +874,7 @@ const BLOCOS_DATA = {
       "horario": "15:00",
       "horario_fim": "17:00",
       "concentracao": "City América",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.501591,
       "lng": -46.732146,
       "trajeto_aproximado": []
@@ -900,7 +900,7 @@ const BLOCOS_DATA = {
       "horario": "13:00",
       "horario_fim": "18:00",
       "concentracao": "Itaim Bibi",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.608319,
       "lng": -46.696407,
       "trajeto_aproximado": []
@@ -926,7 +926,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Vila Madalena",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.546496,
       "lng": -46.691124,
       "trajeto_aproximado": []
@@ -939,7 +939,7 @@ const BLOCOS_DATA = {
       "horario": "20:00",
       "horario_fim": "23:00",
       "concentracao": "Vila Buarque",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.543773,
       "lng": -46.646464,
       "trajeto_aproximado": []
@@ -952,7 +952,7 @@ const BLOCOS_DATA = {
       "horario": "19:00",
       "horario_fim": "22:00",
       "concentracao": "Bela Vista",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.560122,
       "lng": -46.650034,
       "trajeto_aproximado": []
@@ -965,7 +965,7 @@ const BLOCOS_DATA = {
       "horario": "21:00",
       "horario_fim": "00:00",
       "concentracao": "Bela Vista",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.560122,
       "lng": -46.650034,
       "trajeto_aproximado": []
@@ -977,7 +977,7 @@ const BLOCOS_DATA = {
       "dia_semana": "Sábado",
       "horario": "13:00",
       "concentracao": "R. Augusta",
-      "tipo": "Tradicional",
+      "tipo": "Megabloco",
       "lat": -23.5535,
       "lng": -46.6568,
       "trajeto_aproximado": [
@@ -1002,7 +1002,7 @@ const BLOCOS_DATA = {
       "dia_semana": "Sábado",
       "horario": "11:00",
       "concentracao": "R. Faustolo, 809",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.527,
       "lng": -46.692,
       "trajeto_aproximado": [
@@ -1058,7 +1058,7 @@ const BLOCOS_DATA = {
       "horario": "13:00",
       "horario_fim": "17:00",
       "concentracao": "Sumarezinho",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.547111,
       "lng": -46.692151,
       "trajeto_aproximado": []
@@ -1070,7 +1070,7 @@ const BLOCOS_DATA = {
       "dia_semana": "Sábado",
       "horario": "18:00",
       "concentracao": "R. Augusta",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.5555,
       "lng": -46.659,
       "trajeto_aproximado": [
@@ -1095,7 +1095,7 @@ const BLOCOS_DATA = {
       "dia_semana": "Sábado",
       "horario": "10:00",
       "concentracao": "Av. Brigadeiro Faria Lima, 4100",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.5858,
       "lng": -46.6815,
       "trajeto_aproximado": [
@@ -1146,7 +1146,7 @@ const BLOCOS_DATA = {
       "horario": "17:00",
       "horario_fim": "18:00",
       "concentracao": "Vila Mariana",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.589178,
       "lng": -46.634668,
       "trajeto_aproximado": []
@@ -1159,7 +1159,7 @@ const BLOCOS_DATA = {
       "horario": "11:00",
       "horario_fim": "14:00",
       "concentracao": "Vila Mariana",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.589178,
       "lng": -46.634668,
       "trajeto_aproximado": []
@@ -1171,7 +1171,7 @@ const BLOCOS_DATA = {
       "dia_semana": "Sábado",
       "horario": "13:00",
       "concentracao": "R. João Moura",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.5615,
       "lng": -46.687,
       "trajeto_aproximado": [
@@ -1196,7 +1196,7 @@ const BLOCOS_DATA = {
       "dia_semana": "Sábado",
       "horario": "13:00",
       "concentracao": "Av. Brigadeiro Faria Lima, 4100",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.587,
       "lng": -46.68,
       "trajeto_aproximado": [
@@ -1221,7 +1221,7 @@ const BLOCOS_DATA = {
       "dia_semana": "Sábado",
       "horario": "13:00",
       "concentracao": "Av. Marquês de São Vicente, 230",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.525,
       "lng": -46.669,
       "trajeto_aproximado": [
@@ -1246,7 +1246,7 @@ const BLOCOS_DATA = {
       "dia_semana": "Sábado",
       "horario": "14:00",
       "concentracao": "Av. Humberto Gomes Maia",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.541,
       "lng": -46.455,
       "trajeto_aproximado": []
@@ -1258,7 +1258,7 @@ const BLOCOS_DATA = {
       "dia_semana": "Sábado",
       "horario": "13:00",
       "concentracao": "R. Estevão Lopes",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.572,
       "lng": -46.72,
       "trajeto_aproximado": [
@@ -1283,7 +1283,7 @@ const BLOCOS_DATA = {
       "dia_semana": "Sábado",
       "horario": "14:00",
       "concentracao": "Largo do Paissandu",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.544,
       "lng": -46.64,
       "trajeto_aproximado": [
@@ -1333,7 +1333,7 @@ const BLOCOS_DATA = {
       "dia_semana": "Sábado",
       "horario": "09:00",
       "concentracao": "Praça Cornélia",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.5265,
       "lng": -46.6935,
       "trajeto_aproximado": [
@@ -1359,7 +1359,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "São Miguel Paulista",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.490554,
       "lng": -46.443666,
       "trajeto_aproximado": []
@@ -1371,7 +1371,7 @@ const BLOCOS_DATA = {
       "dia_semana": "Sábado",
       "horario": "13:00",
       "concentracao": "R. José Porfírio de Souza",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.546,
       "lng": -46.525,
       "trajeto_aproximado": []
@@ -1383,7 +1383,7 @@ const BLOCOS_DATA = {
       "dia_semana": "Sábado",
       "horario": "09:00",
       "concentracao": "R. dos Patriotas",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.587,
       "lng": -46.612,
       "trajeto_aproximado": [
@@ -1408,7 +1408,7 @@ const BLOCOS_DATA = {
       "dia_semana": "Sábado",
       "horario": "13:00",
       "concentracao": "R. Capitão Paulo Carrilho",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.571,
       "lng": -46.719,
       "trajeto_aproximado": []
@@ -1421,7 +1421,7 @@ const BLOCOS_DATA = {
       "horario": "13:00",
       "horario_fim": "16:00",
       "concentracao": "Vila Mariana",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.589178,
       "lng": -46.634668,
       "trajeto_aproximado": []
@@ -1433,7 +1433,7 @@ const BLOCOS_DATA = {
       "dia_semana": "Sábado",
       "horario": "13:00",
       "concentracao": "Largo da Matriz de Nossa Senhora do Ó",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.505,
       "lng": -46.692,
       "trajeto_aproximado": [
@@ -1458,7 +1458,7 @@ const BLOCOS_DATA = {
       "dia_semana": "Sábado",
       "horario": "10:00",
       "concentracao": "R. XV de Novembro",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.5445,
       "lng": -46.6352,
       "trajeto_aproximado": [
@@ -1483,7 +1483,7 @@ const BLOCOS_DATA = {
       "dia_semana": "Sábado",
       "horario": "11:00",
       "concentracao": "R. Gilberto Freyre",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.595,
       "lng": -46.685,
       "trajeto_aproximado": []
@@ -1495,7 +1495,7 @@ const BLOCOS_DATA = {
       "dia_semana": "Sábado",
       "horario": "11:00",
       "concentracao": "R. Augusta, 1300",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.5525,
       "lng": -46.6555,
       "trajeto_aproximado": [
@@ -1521,7 +1521,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "17:00",
       "concentracao": "Penha de França",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.528387,
       "lng": -46.501927,
       "trajeto_aproximado": []
@@ -1533,7 +1533,7 @@ const BLOCOS_DATA = {
       "dia_semana": "Sábado",
       "horario": "13:00",
       "concentracao": "R. Faustolo, 800",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.5275,
       "lng": -46.6915,
       "trajeto_aproximado": [
@@ -1559,7 +1559,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "17:00",
       "concentracao": "Ipiranga",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.594535,
       "lng": -46.602669,
       "trajeto_aproximado": []
@@ -1571,7 +1571,7 @@ const BLOCOS_DATA = {
       "dia_semana": "Sábado",
       "horario": "12:10",
       "concentracao": "R. Izonzo, 459",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.562,
       "lng": -46.598,
       "trajeto_aproximado": [
@@ -1596,7 +1596,7 @@ const BLOCOS_DATA = {
       "dia_semana": "Sábado",
       "horario": "13:00",
       "concentracao": "Tv. Roque Adoglio",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.529,
       "lng": -46.686,
       "trajeto_aproximado": [
@@ -1621,7 +1621,7 @@ const BLOCOS_DATA = {
       "dia_semana": "Sábado",
       "horario": "13:00",
       "concentracao": "R. Labatut",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.589,
       "lng": -46.61,
       "trajeto_aproximado": [
@@ -1647,7 +1647,7 @@ const BLOCOS_DATA = {
       "horario": "16:00",
       "horario_fim": "18:00",
       "concentracao": "São Miguel Paulista",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.490554,
       "lng": -46.443666,
       "trajeto_aproximado": []
@@ -1659,7 +1659,7 @@ const BLOCOS_DATA = {
       "dia_semana": "Sábado",
       "horario": "10:00",
       "concentracao": "R. XV de Novembro",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.545,
       "lng": -46.634,
       "trajeto_aproximado": [
@@ -1684,7 +1684,7 @@ const BLOCOS_DATA = {
       "dia_semana": "Sábado",
       "horario": "12:00",
       "concentracao": "Tv. Francisco Adriani",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.506,
       "lng": -46.691,
       "trajeto_aproximado": []
@@ -1697,7 +1697,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "17:00",
       "concentracao": "Tatuapé",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.540252,
       "lng": -46.576642,
       "trajeto_aproximado": []
@@ -1709,7 +1709,7 @@ const BLOCOS_DATA = {
       "dia_semana": "Sábado",
       "horario": "14:00",
       "concentracao": "R. Jenny Bonilha Costivelli",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.54,
       "lng": -46.454,
       "trajeto_aproximado": []
@@ -1747,7 +1747,7 @@ const BLOCOS_DATA = {
       "horario": "13:00",
       "horario_fim": "17:00",
       "concentracao": "Tatuapé",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.540252,
       "lng": -46.576642,
       "trajeto_aproximado": []
@@ -1785,7 +1785,7 @@ const BLOCOS_DATA = {
       "dia_semana": "Sábado",
       "horario": "13:00",
       "concentracao": "R. dos Patriotas",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.5878,
       "lng": -46.6112,
       "trajeto_aproximado": []
@@ -1797,7 +1797,7 @@ const BLOCOS_DATA = {
       "dia_semana": "Sábado",
       "horario": "12:20",
       "concentracao": "R. Antônio Sérgio de Matos",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.612,
       "lng": -46.474,
       "trajeto_aproximado": []
@@ -1810,7 +1810,7 @@ const BLOCOS_DATA = {
       "horario": "13:00",
       "horario_fim": "16:00",
       "concentracao": "Vila Mariana",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.589178,
       "lng": -46.634668,
       "trajeto_aproximado": []
@@ -1823,7 +1823,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Pinheiros",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.565,
       "lng": -46.6865,
       "trajeto_aproximado": []
@@ -1836,7 +1836,7 @@ const BLOCOS_DATA = {
       "horario": "15:00",
       "horario_fim": "18:00",
       "concentracao": "Jardim Japão",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.513868,
       "lng": -46.586677,
       "trajeto_aproximado": []
@@ -1848,7 +1848,7 @@ const BLOCOS_DATA = {
       "dia_semana": "Sábado",
       "horario": "16:00",
       "concentracao": "R. Inácio Pereira da Rocha, 385",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.5645,
       "lng": -46.6895,
       "trajeto_aproximado": [
@@ -1874,7 +1874,7 @@ const BLOCOS_DATA = {
       "horario": "15:00",
       "horario_fim": "17:00",
       "concentracao": "Vila Mariana",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.589178,
       "lng": -46.634668,
       "trajeto_aproximado": []
@@ -1887,7 +1887,7 @@ const BLOCOS_DATA = {
       "horario": "15:00",
       "horario_fim": "18:00",
       "concentracao": "Jardim São Vicente",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.509343,
       "lng": -46.808769,
       "trajeto_aproximado": []
@@ -1899,7 +1899,7 @@ const BLOCOS_DATA = {
       "dia_semana": "Sábado",
       "horario": "13:00",
       "concentracao": "R. Lisboa",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.5635,
       "lng": -46.692,
       "trajeto_aproximado": [
@@ -1974,7 +1974,7 @@ const BLOCOS_DATA = {
       "dia_semana": "Sábado",
       "horario": "12:00",
       "concentracao": "R. Antonio Cavazzam",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.5055,
       "lng": -46.69,
       "trajeto_aproximado": []
@@ -1987,7 +1987,7 @@ const BLOCOS_DATA = {
       "horario": "11:00",
       "horario_fim": "14:00",
       "concentracao": "Jardim Japão",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.513868,
       "lng": -46.586677,
       "trajeto_aproximado": []
@@ -1999,7 +1999,7 @@ const BLOCOS_DATA = {
       "dia_semana": "Sábado",
       "horario": "11:00",
       "concentracao": "Av. Ipiranga x Av. São João",
-      "tipo": "Tradicional",
+      "tipo": "Megabloco",
       "lat": -23.5415,
       "lng": -46.642,
       "trajeto_aproximado": [
@@ -2028,7 +2028,7 @@ const BLOCOS_DATA = {
       "dia_semana": "Sábado",
       "horario": "13:00",
       "concentracao": "R. Andréa Della Robbia",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.605,
       "lng": -46.735,
       "trajeto_aproximado": []
@@ -2040,7 +2040,7 @@ const BLOCOS_DATA = {
       "dia_semana": "Sábado",
       "horario": "09:00",
       "concentracao": "R. Irmã Clotilde",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.547,
       "lng": -46.523,
       "trajeto_aproximado": []
@@ -2052,7 +2052,7 @@ const BLOCOS_DATA = {
       "dia_semana": "Domingo",
       "horario": "11:00",
       "concentracao": "Av. Marquês de São Vicente, 230",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.5255,
       "lng": -46.6682,
       "trajeto_aproximado": [
@@ -2091,7 +2091,7 @@ const BLOCOS_DATA = {
       "horario": "15:00",
       "horario_fim": "18:00",
       "concentracao": "Jardim Santo Elias",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.51006,
       "lng": -46.750369,
       "trajeto_aproximado": []
@@ -2104,7 +2104,7 @@ const BLOCOS_DATA = {
       "horario": "12:00",
       "horario_fim": "15:00",
       "concentracao": "Vila Mariana",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.589178,
       "lng": -46.634668,
       "trajeto_aproximado": []
@@ -2155,7 +2155,7 @@ const BLOCOS_DATA = {
       "dia_semana": "Domingo",
       "horario": "10:00",
       "concentracao": "R. Wisard",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.554,
       "lng": -46.693,
       "trajeto_aproximado": [
@@ -2194,7 +2194,7 @@ const BLOCOS_DATA = {
       "horario": "13:00",
       "horario_fim": "17:00",
       "concentracao": "Itaim Paulista",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.493985,
       "lng": -46.402162,
       "trajeto_aproximado": []
@@ -2207,7 +2207,7 @@ const BLOCOS_DATA = {
       "horario": "17:00",
       "horario_fim": "18:00",
       "concentracao": "Parque Sao Luis",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.674644,
       "lng": -46.747309,
       "trajeto_aproximado": []
@@ -2220,7 +2220,7 @@ const BLOCOS_DATA = {
       "horario": "11:00",
       "horario_fim": "15:00",
       "concentracao": "Itaim Bibi",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.608319,
       "lng": -46.696407,
       "trajeto_aproximado": []
@@ -2233,7 +2233,7 @@ const BLOCOS_DATA = {
       "horario": "17:00",
       "horario_fim": "18:00",
       "concentracao": "Brás",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.545114,
       "lng": -46.616335,
       "trajeto_aproximado": []
@@ -2245,7 +2245,7 @@ const BLOCOS_DATA = {
       "dia_semana": "Domingo",
       "horario": "13:00",
       "concentracao": "Av. Marquês de São Vicente, 230",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.526,
       "lng": -46.6695,
       "trajeto_aproximado": [
@@ -2270,7 +2270,7 @@ const BLOCOS_DATA = {
       "dia_semana": "Domingo",
       "horario": "12:00",
       "concentracao": "Av. Eng. Eusébio Estevaux",
-      "tipo": "Tradicional",
+      "tipo": "Rock",
       "lat": -23.652,
       "lng": -46.71,
       "trajeto_aproximado": [
@@ -2295,7 +2295,7 @@ const BLOCOS_DATA = {
       "dia_semana": "Domingo",
       "horario": "08:00",
       "concentracao": "R. Marcelina",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.528,
       "lng": -46.695,
       "trajeto_aproximado": [
@@ -2320,7 +2320,7 @@ const BLOCOS_DATA = {
       "dia_semana": "Domingo",
       "horario": "11:00",
       "concentracao": "R. Marcondes Machado, 56",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.542,
       "lng": -46.576,
       "trajeto_aproximado": [
@@ -2346,7 +2346,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Butantã",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.5719,
       "lng": -46.70809,
       "trajeto_aproximado": []
@@ -2359,7 +2359,7 @@ const BLOCOS_DATA = {
       "horario": "15:00",
       "horario_fim": "18:00",
       "concentracao": "Vila Mariana",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.589178,
       "lng": -46.634668,
       "trajeto_aproximado": []
@@ -2398,7 +2398,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "16:00",
       "concentracao": "Cangaiba",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.504035,
       "lng": -46.530767,
       "trajeto_aproximado": []
@@ -2410,7 +2410,7 @@ const BLOCOS_DATA = {
       "dia_semana": "Domingo",
       "horario": "10:00",
       "concentracao": "R. Anita Tagliaferri",
-      "tipo": "Tradicional",
+      "tipo": "LGBTQIA+",
       "lat": -23.61,
       "lng": -46.595,
       "trajeto_aproximado": []
@@ -2423,7 +2423,7 @@ const BLOCOS_DATA = {
       "horario": "15:00",
       "horario_fim": "18:00",
       "concentracao": "Cidade Patriarca",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.539093,
       "lng": -46.503929,
       "trajeto_aproximado": []
@@ -2436,7 +2436,7 @@ const BLOCOS_DATA = {
       "horario": "12:00",
       "horario_fim": "16:00",
       "concentracao": "Cangaiba",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.504035,
       "lng": -46.530767,
       "trajeto_aproximado": []
@@ -2449,7 +2449,7 @@ const BLOCOS_DATA = {
       "horario": "10:00",
       "horario_fim": "14:00",
       "concentracao": "Vila Mariana",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.589178,
       "lng": -46.634668,
       "trajeto_aproximado": []
@@ -2462,7 +2462,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Vila Gumercindo",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.604668,
       "lng": -46.62095,
       "trajeto_aproximado": []
@@ -2475,7 +2475,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Belenzinho",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.548461,
       "lng": -46.593777,
       "trajeto_aproximado": []
@@ -2488,7 +2488,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "17:00",
       "concentracao": "Vila Nova Cachoeirinha",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.48021,
       "lng": -46.670971,
       "trajeto_aproximado": []
@@ -2501,7 +2501,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "17:00",
       "concentracao": "Jardim Santo Andre",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.708531,
       "lng": -46.499716,
       "trajeto_aproximado": []
@@ -2514,7 +2514,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Brás",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.545114,
       "lng": -46.616335,
       "trajeto_aproximado": []
@@ -2551,7 +2551,7 @@ const BLOCOS_DATA = {
       "dia_semana": "Domingo",
       "horario": "15:00",
       "concentracao": "R. Dr. Augusto de Miranda",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.5318,
       "lng": -46.687,
       "trajeto_aproximado": [
@@ -2603,7 +2603,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Jardim Peri Peri",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.468259,
       "lng": -46.668152,
       "trajeto_aproximado": []
@@ -2616,7 +2616,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Vila Carbone",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.532759,
       "lng": -46.606862,
       "trajeto_aproximado": []
@@ -2628,7 +2628,7 @@ const BLOCOS_DATA = {
       "dia_semana": "Domingo",
       "horario": "14:00",
       "concentracao": "R. Tucuna",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.5305,
       "lng": -46.6795,
       "trajeto_aproximado": []
@@ -2640,7 +2640,7 @@ const BLOCOS_DATA = {
       "dia_semana": "Domingo",
       "horario": "13:00",
       "concentracao": "R. Caraíbas",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.5315,
       "lng": -46.68,
       "trajeto_aproximado": []
@@ -2653,7 +2653,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Butantã",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.5719,
       "lng": -46.70809,
       "trajeto_aproximado": []
@@ -2666,7 +2666,7 @@ const BLOCOS_DATA = {
       "horario": "12:00",
       "horario_fim": "16:00",
       "concentracao": "Lapa",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.517516,
       "lng": -46.704036,
       "trajeto_aproximado": []
@@ -2679,7 +2679,7 @@ const BLOCOS_DATA = {
       "horario": "15:00",
       "horario_fim": "18:00",
       "concentracao": "Vila Monumento",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.568878,
       "lng": -46.609506,
       "trajeto_aproximado": []
@@ -2692,7 +2692,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Itaim Bibi",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.608319,
       "lng": -46.696407,
       "trajeto_aproximado": []
@@ -2705,7 +2705,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "20:00",
       "concentracao": "Bela Vista",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.560122,
       "lng": -46.650034,
       "trajeto_aproximado": []
@@ -2718,7 +2718,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Consolação",
-      "tipo": "Tradicional",
+      "tipo": "Afro",
       "lat": -23.557818,
       "lng": -46.660537,
       "trajeto_aproximado": []
@@ -2731,7 +2731,7 @@ const BLOCOS_DATA = {
       "horario": "12:00",
       "horario_fim": "16:00",
       "concentracao": "Itaim Bibi",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.608319,
       "lng": -46.696407,
       "trajeto_aproximado": []
@@ -2744,7 +2744,7 @@ const BLOCOS_DATA = {
       "horario": "13:00",
       "horario_fim": "17:00",
       "concentracao": "Pinheiros",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.567215,
       "lng": -46.701952,
       "trajeto_aproximado": []
@@ -2757,7 +2757,7 @@ const BLOCOS_DATA = {
       "horario": "10:00",
       "horario_fim": "14:00",
       "concentracao": "Pinheiros",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.567215,
       "lng": -46.701952,
       "trajeto_aproximado": []
@@ -2769,7 +2769,7 @@ const BLOCOS_DATA = {
       "dia_semana": "Segunda-feira",
       "horario": "09:00",
       "concentracao": "R. dos Patriotas",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.587,
       "lng": -46.612,
       "trajeto_aproximado": [
@@ -2795,7 +2795,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Perdizes",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.539989,
       "lng": -46.670982,
       "trajeto_aproximado": []
@@ -2808,7 +2808,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Vila Miriam",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.681288,
       "lng": -46.635843,
       "trajeto_aproximado": []
@@ -2821,7 +2821,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Bela Vista",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.560122,
       "lng": -46.650034,
       "trajeto_aproximado": []
@@ -2834,7 +2834,7 @@ const BLOCOS_DATA = {
       "horario": "13:00",
       "horario_fim": "17:00",
       "concentracao": "Vila Mariana",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.589178,
       "lng": -46.634668,
       "trajeto_aproximado": []
@@ -2877,7 +2877,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Vila Pirajussara",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.650428,
       "lng": -46.783276,
       "trajeto_aproximado": []
@@ -2890,7 +2890,7 @@ const BLOCOS_DATA = {
       "horario": "10:00",
       "horario_fim": "13:00",
       "concentracao": "Pinheiros",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.567215,
       "lng": -46.701952,
       "trajeto_aproximado": []
@@ -2903,7 +2903,7 @@ const BLOCOS_DATA = {
       "horario": "10:00",
       "horario_fim": "13:00",
       "concentracao": "Pinheiros",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.567215,
       "lng": -46.701952,
       "trajeto_aproximado": []
@@ -2916,7 +2916,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Pinheiros",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.567215,
       "lng": -46.701952,
       "trajeto_aproximado": []
@@ -2929,7 +2929,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Vila Guilherme",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.517097,
       "lng": -46.607962,
       "trajeto_aproximado": []
@@ -2942,7 +2942,7 @@ const BLOCOS_DATA = {
       "horario": "10:00",
       "horario_fim": "14:00",
       "concentracao": "Perdizes",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.539989,
       "lng": -46.670982,
       "trajeto_aproximado": []
@@ -2955,7 +2955,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "17:00",
       "concentracao": "Guapira",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.445762,
       "lng": -46.583473,
       "trajeto_aproximado": []
@@ -2968,7 +2968,7 @@ const BLOCOS_DATA = {
       "horario": "11:00",
       "horario_fim": "12:00",
       "concentracao": "Indianópolis",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.591351,
       "lng": -46.672397,
       "trajeto_aproximado": []
@@ -2981,7 +2981,7 @@ const BLOCOS_DATA = {
       "horario": "13:00",
       "horario_fim": "17:00",
       "concentracao": "Consolação",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.557818,
       "lng": -46.660537,
       "trajeto_aproximado": []
@@ -2994,7 +2994,7 @@ const BLOCOS_DATA = {
       "horario": "15:00",
       "horario_fim": "18:00",
       "concentracao": "Santana/Tucuruvi",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.487298,
       "lng": -46.621721,
       "trajeto_aproximado": []
@@ -3006,7 +3006,7 @@ const BLOCOS_DATA = {
       "dia_semana": "Segunda-feira",
       "horario": "13:00",
       "concentracao": "R. dos Patriotas",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.5878,
       "lng": -46.6112,
       "trajeto_aproximado": [
@@ -3032,7 +3032,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "16:00",
       "concentracao": "Sé",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.550443,
       "lng": -46.633446,
       "trajeto_aproximado": []
@@ -3058,7 +3058,7 @@ const BLOCOS_DATA = {
       "horario": "12:00",
       "horario_fim": "16:00",
       "concentracao": "Consolação",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.557818,
       "lng": -46.660537,
       "trajeto_aproximado": []
@@ -3071,7 +3071,7 @@ const BLOCOS_DATA = {
       "horario": "15:00",
       "horario_fim": "18:00",
       "concentracao": "Pinheiros",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.567215,
       "lng": -46.701952,
       "trajeto_aproximado": []
@@ -3084,7 +3084,7 @@ const BLOCOS_DATA = {
       "horario": "10:00",
       "horario_fim": "14:00",
       "concentracao": "Vila Buarque",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.543773,
       "lng": -46.646464,
       "trajeto_aproximado": []
@@ -3097,7 +3097,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Vila Mariana",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.589178,
       "lng": -46.634668,
       "trajeto_aproximado": []
@@ -3110,7 +3110,7 @@ const BLOCOS_DATA = {
       "horario": "13:00",
       "horario_fim": "17:00",
       "concentracao": "Vila Buarque",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.543773,
       "lng": -46.646464,
       "trajeto_aproximado": []
@@ -3123,7 +3123,7 @@ const BLOCOS_DATA = {
       "horario": "16:00",
       "horario_fim": "18:00",
       "concentracao": "Butantã",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.5719,
       "lng": -46.70809,
       "trajeto_aproximado": []
@@ -3136,7 +3136,7 @@ const BLOCOS_DATA = {
       "horario": "10:00",
       "horario_fim": "14:00",
       "concentracao": "Lapa",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.517516,
       "lng": -46.704036,
       "trajeto_aproximado": []
@@ -3149,7 +3149,7 @@ const BLOCOS_DATA = {
       "horario": "12:00",
       "horario_fim": "16:00",
       "concentracao": "Alto de Pinheiros",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.549906,
       "lng": -46.707642,
       "trajeto_aproximado": []
@@ -3162,7 +3162,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "17:00",
       "concentracao": "União Vila Nova",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.485676,
       "lng": -46.459839,
       "trajeto_aproximado": []
@@ -3175,7 +3175,7 @@ const BLOCOS_DATA = {
       "horario": "15:00",
       "horario_fim": "18:00",
       "concentracao": "Vila Jacuí",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.505109,
       "lng": -46.451953,
       "trajeto_aproximado": []
@@ -3188,7 +3188,7 @@ const BLOCOS_DATA = {
       "horario": "13:00",
       "horario_fim": "17:00",
       "concentracao": "Conjunto Habitacional Juscelino Kubitschek",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.56854,
       "lng": -46.397097,
       "trajeto_aproximado": []
@@ -3201,7 +3201,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Ipiranga",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.594535,
       "lng": -46.602669,
       "trajeto_aproximado": []
@@ -3227,7 +3227,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Parque da Mooca",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.551696,
       "lng": -46.606485,
       "trajeto_aproximado": []
@@ -3240,7 +3240,7 @@ const BLOCOS_DATA = {
       "horario": "16:00",
       "horario_fim": "18:00",
       "concentracao": "Perus",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.404922,
       "lng": -46.753696,
       "trajeto_aproximado": []
@@ -3252,7 +3252,7 @@ const BLOCOS_DATA = {
       "dia_semana": "Terça-feira",
       "horario": "13:00",
       "concentracao": "Largo da Matriz de Nossa Senhora do Ó",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.5055,
       "lng": -46.6915,
       "trajeto_aproximado": [
@@ -3278,7 +3278,7 @@ const BLOCOS_DATA = {
       "horario": "15:00",
       "horario_fim": "18:00",
       "concentracao": "Vila Jacuí",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.505109,
       "lng": -46.451953,
       "trajeto_aproximado": []
@@ -3316,7 +3316,7 @@ const BLOCOS_DATA = {
       "horario": "15:00",
       "horario_fim": "18:00",
       "concentracao": "Vila Feliz",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.955396,
       "lng": -46.456561,
       "trajeto_aproximado": []
@@ -3329,7 +3329,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Jardim Peri Peri",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.468259,
       "lng": -46.668152,
       "trajeto_aproximado": []
@@ -3342,7 +3342,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "17:00",
       "concentracao": "Parque São Lourenço",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.74421,
       "lng": -46.799453,
       "trajeto_aproximado": []
@@ -3355,7 +3355,7 @@ const BLOCOS_DATA = {
       "horario": "16:00",
       "horario_fim": "18:00",
       "concentracao": "Vila Matilde",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.531917,
       "lng": -46.530873,
       "trajeto_aproximado": []
@@ -3368,7 +3368,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Brás",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.545114,
       "lng": -46.616335,
       "trajeto_aproximado": []
@@ -3394,7 +3394,7 @@ const BLOCOS_DATA = {
       "horario": "13:00",
       "horario_fim": "14:00",
       "concentracao": "Perus",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.404922,
       "lng": -46.753696,
       "trajeto_aproximado": []
@@ -3407,7 +3407,7 @@ const BLOCOS_DATA = {
       "horario": "13:00",
       "horario_fim": "17:00",
       "concentracao": "Vila Miriam",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.681288,
       "lng": -46.635843,
       "trajeto_aproximado": []
@@ -3433,7 +3433,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Vila Alpina",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.589824,
       "lng": -46.565185,
       "trajeto_aproximado": []
@@ -3446,7 +3446,7 @@ const BLOCOS_DATA = {
       "horario": "17:00",
       "horario_fim": "20:00",
       "concentracao": "Vila Perus",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.416689,
       "lng": -46.746414,
       "trajeto_aproximado": []
@@ -3459,7 +3459,7 @@ const BLOCOS_DATA = {
       "horario": "13:00",
       "horario_fim": "17:00",
       "concentracao": "Ipiranga",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.594535,
       "lng": -46.602669,
       "trajeto_aproximado": []
@@ -3472,7 +3472,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "17:00",
       "concentracao": "Itaim Bibi",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.608319,
       "lng": -46.696407,
       "trajeto_aproximado": []
@@ -3485,7 +3485,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Cangaiba",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.504035,
       "lng": -46.530767,
       "trajeto_aproximado": []
@@ -3498,7 +3498,7 @@ const BLOCOS_DATA = {
       "horario": "19:00",
       "horario_fim": "22:00",
       "concentracao": "Vila Perus",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.416689,
       "lng": -46.746414,
       "trajeto_aproximado": []
@@ -3511,7 +3511,7 @@ const BLOCOS_DATA = {
       "horario": "15:00",
       "horario_fim": "18:00",
       "concentracao": "Pinheiros",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.567215,
       "lng": -46.701952,
       "trajeto_aproximado": []
@@ -3524,7 +3524,7 @@ const BLOCOS_DATA = {
       "horario": "15:00",
       "horario_fim": "18:00",
       "concentracao": "Pinheiros",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.567215,
       "lng": -46.701952,
       "trajeto_aproximado": []
@@ -3537,7 +3537,7 @@ const BLOCOS_DATA = {
       "horario": "11:00",
       "horario_fim": "14:00",
       "concentracao": "Lapa",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.517516,
       "lng": -46.704036,
       "trajeto_aproximado": []
@@ -3550,7 +3550,7 @@ const BLOCOS_DATA = {
       "horario": "11:00",
       "horario_fim": "14:00",
       "concentracao": "Perdizes",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.539989,
       "lng": -46.670982,
       "trajeto_aproximado": []
@@ -3563,7 +3563,7 @@ const BLOCOS_DATA = {
       "horario": "16:00",
       "horario_fim": "18:00",
       "concentracao": "Planalto Paulista",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.612004,
       "lng": -46.660314,
       "trajeto_aproximado": []
@@ -3576,7 +3576,7 @@ const BLOCOS_DATA = {
       "horario": "15:00",
       "horario_fim": "18:00",
       "concentracao": "Vila Madalena",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.546496,
       "lng": -46.691124,
       "trajeto_aproximado": []
@@ -3589,7 +3589,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Vila Mariana",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.589178,
       "lng": -46.634668,
       "trajeto_aproximado": []
@@ -3602,7 +3602,7 @@ const BLOCOS_DATA = {
       "horario": "10:00",
       "horario_fim": "14:00",
       "concentracao": "Vila Mariana",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.589178,
       "lng": -46.634668,
       "trajeto_aproximado": []
@@ -3615,7 +3615,7 @@ const BLOCOS_DATA = {
       "horario": "13:00",
       "horario_fim": "17:00",
       "concentracao": "Santo Amaro",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.65623,
       "lng": -46.719116,
       "trajeto_aproximado": []
@@ -3628,7 +3628,7 @@ const BLOCOS_DATA = {
       "horario": "15:00",
       "horario_fim": "18:00",
       "concentracao": "Bela Vista",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.560122,
       "lng": -46.650034,
       "trajeto_aproximado": []
@@ -3641,7 +3641,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Vila Bela Aliança",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.531644,
       "lng": -46.729875,
       "trajeto_aproximado": []
@@ -3654,7 +3654,7 @@ const BLOCOS_DATA = {
       "horario": "13:00",
       "horario_fim": "17:00",
       "concentracao": "Imirim",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.492899,
       "lng": -46.648475,
       "trajeto_aproximado": []
@@ -3667,7 +3667,7 @@ const BLOCOS_DATA = {
       "horario": "15:00",
       "horario_fim": "18:00",
       "concentracao": "Santa Cecilia",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.539324,
       "lng": -46.648957,
       "trajeto_aproximado": []
@@ -3680,7 +3680,7 @@ const BLOCOS_DATA = {
       "horario": "11:00",
       "horario_fim": "15:00",
       "concentracao": "Pinheiros",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.567215,
       "lng": -46.701952,
       "trajeto_aproximado": []
@@ -3693,7 +3693,7 @@ const BLOCOS_DATA = {
       "horario": "13:00",
       "horario_fim": "17:00",
       "concentracao": "Barra Funda",
-      "tipo": "Tradicional",
+      "tipo": "LGBTQIA+",
       "lat": -23.525462,
       "lng": -46.667513,
       "trajeto_aproximado": []
@@ -3706,7 +3706,7 @@ const BLOCOS_DATA = {
       "horario": "16:00",
       "horario_fim": "18:00",
       "concentracao": "Vila Monumento",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.568878,
       "lng": -46.609506,
       "trajeto_aproximado": []
@@ -3732,7 +3732,7 @@ const BLOCOS_DATA = {
       "horario": "11:00",
       "horario_fim": "15:00",
       "concentracao": "Pinheiros",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.567215,
       "lng": -46.701952,
       "trajeto_aproximado": []
@@ -3745,7 +3745,7 @@ const BLOCOS_DATA = {
       "horario": "15:00",
       "horario_fim": "18:00",
       "concentracao": "Brooklin",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.627885,
       "lng": -46.687026,
       "trajeto_aproximado": []
@@ -3758,7 +3758,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "17:00",
       "concentracao": "República",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.544094,
       "lng": -46.642665,
       "trajeto_aproximado": []
@@ -3796,7 +3796,7 @@ const BLOCOS_DATA = {
       "horario": "15:00",
       "horario_fim": "18:00",
       "concentracao": "Butantã",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.5719,
       "lng": -46.70809,
       "trajeto_aproximado": []
@@ -3809,7 +3809,7 @@ const BLOCOS_DATA = {
       "horario": "13:00",
       "horario_fim": "17:00",
       "concentracao": "Vila Buarque",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.543773,
       "lng": -46.646464,
       "trajeto_aproximado": []
@@ -3822,7 +3822,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Pinheiros",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.567215,
       "lng": -46.701952,
       "trajeto_aproximado": []
@@ -3835,7 +3835,7 @@ const BLOCOS_DATA = {
       "horario": "13:00",
       "horario_fim": "17:00",
       "concentracao": "Pinheiros",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.567215,
       "lng": -46.701952,
       "trajeto_aproximado": []
@@ -3848,7 +3848,7 @@ const BLOCOS_DATA = {
       "horario": "10:00",
       "horario_fim": "13:00",
       "concentracao": "Ipiranga",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.594535,
       "lng": -46.602669,
       "trajeto_aproximado": []
@@ -3861,7 +3861,7 @@ const BLOCOS_DATA = {
       "horario": "12:00",
       "horario_fim": "16:00",
       "concentracao": "Ipiranga",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.594535,
       "lng": -46.602669,
       "trajeto_aproximado": []
@@ -3874,7 +3874,7 @@ const BLOCOS_DATA = {
       "horario": "15:00",
       "horario_fim": "18:00",
       "concentracao": "Várzea da Barra Funda",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.525575,
       "lng": -46.662585,
       "trajeto_aproximado": []
@@ -3887,7 +3887,7 @@ const BLOCOS_DATA = {
       "horario": "13:00",
       "horario_fim": "17:00",
       "concentracao": "Vila Tiradentes",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.565901,
       "lng": -46.411635,
       "trajeto_aproximado": []
@@ -3900,7 +3900,7 @@ const BLOCOS_DATA = {
       "horario": "16:00",
       "horario_fim": "17:00",
       "concentracao": "Vila São José",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.518065,
       "lng": -46.772522,
       "trajeto_aproximado": []
@@ -3913,7 +3913,7 @@ const BLOCOS_DATA = {
       "horario": "16:00",
       "horario_fim": "18:00",
       "concentracao": "Parque Continental",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.538027,
       "lng": -46.758712,
       "trajeto_aproximado": []
@@ -3926,7 +3926,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Vila Matilde",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.531917,
       "lng": -46.530873,
       "trajeto_aproximado": []
@@ -3939,7 +3939,7 @@ const BLOCOS_DATA = {
       "horario": "13:00",
       "horario_fim": "17:00",
       "concentracao": "Consolação",
-      "tipo": "Tradicional",
+      "tipo": "LGBTQIA+",
       "lat": -23.557818,
       "lng": -46.660537,
       "trajeto_aproximado": []
@@ -3952,7 +3952,7 @@ const BLOCOS_DATA = {
       "horario": "13:00",
       "horario_fim": "17:00",
       "concentracao": "Vila Matilde",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.531917,
       "lng": -46.530873,
       "trajeto_aproximado": []
@@ -3965,7 +3965,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Lapa",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.517516,
       "lng": -46.704036,
       "trajeto_aproximado": []
@@ -3978,7 +3978,7 @@ const BLOCOS_DATA = {
       "horario": "15:00",
       "horario_fim": "17:00",
       "concentracao": "Jardim Maringa",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.654214,
       "lng": -46.441321,
       "trajeto_aproximado": []
@@ -3991,7 +3991,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Vila Carioca",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.441534,
       "lng": -46.550035,
       "trajeto_aproximado": []
@@ -4004,7 +4004,7 @@ const BLOCOS_DATA = {
       "horario": "15:00",
       "horario_fim": "18:00",
       "concentracao": "Vila Mariana",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.589178,
       "lng": -46.634668,
       "trajeto_aproximado": []
@@ -4017,7 +4017,7 @@ const BLOCOS_DATA = {
       "horario": "11:00",
       "horario_fim": "14:00",
       "concentracao": "Santa Cecilia",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.539324,
       "lng": -46.648957,
       "trajeto_aproximado": []
@@ -4043,7 +4043,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Tatuapé",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.540252,
       "lng": -46.576642,
       "trajeto_aproximado": []
@@ -4056,7 +4056,7 @@ const BLOCOS_DATA = {
       "horario": "11:00",
       "horario_fim": "14:00",
       "concentracao": "Vila Prudente",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.584427,
       "lng": -46.581938,
       "trajeto_aproximado": []
@@ -4069,7 +4069,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Bom Retiro",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.525163,
       "lng": -46.638164,
       "trajeto_aproximado": []
@@ -4082,7 +4082,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "17:00",
       "concentracao": "Vila Guarani",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.636361,
       "lng": -46.630839,
       "trajeto_aproximado": []
@@ -4095,7 +4095,7 @@ const BLOCOS_DATA = {
       "horario": "15:00",
       "horario_fim": "18:00",
       "concentracao": "Tatuapé",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.540252,
       "lng": -46.576642,
       "trajeto_aproximado": []
@@ -4121,7 +4121,7 @@ const BLOCOS_DATA = {
       "horario": "12:00",
       "horario_fim": "15:00",
       "concentracao": "Vila Mariana",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.589178,
       "lng": -46.634668,
       "trajeto_aproximado": []
@@ -4160,7 +4160,7 @@ const BLOCOS_DATA = {
       "horario": "12:00",
       "horario_fim": "16:00",
       "concentracao": "Pinheiros",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.567215,
       "lng": -46.701952,
       "trajeto_aproximado": []
@@ -4173,7 +4173,7 @@ const BLOCOS_DATA = {
       "horario": "16:00",
       "horario_fim": "18:00",
       "concentracao": "Pinheiros",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.567215,
       "lng": -46.701952,
       "trajeto_aproximado": []
@@ -4186,7 +4186,7 @@ const BLOCOS_DATA = {
       "horario": "15:00",
       "horario_fim": "17:00",
       "concentracao": "Casa Verde",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.516797,
       "lng": -46.653956,
       "trajeto_aproximado": []
@@ -4199,7 +4199,7 @@ const BLOCOS_DATA = {
       "horario": "13:00",
       "horario_fim": "17:00",
       "concentracao": "Consolação",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.557818,
       "lng": -46.660537,
       "trajeto_aproximado": []
@@ -4212,7 +4212,7 @@ const BLOCOS_DATA = {
       "horario": "13:00",
       "horario_fim": "16:00",
       "concentracao": "Pinheiros",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.567215,
       "lng": -46.701952,
       "trajeto_aproximado": []
@@ -4225,7 +4225,7 @@ const BLOCOS_DATA = {
       "horario": "15:00",
       "horario_fim": "18:00",
       "concentracao": "Pinheiros",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.567215,
       "lng": -46.701952,
       "trajeto_aproximado": []
@@ -4238,7 +4238,7 @@ const BLOCOS_DATA = {
       "horario": "15:00",
       "horario_fim": "18:00",
       "concentracao": "Santana",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.502542,
       "lng": -46.624922,
       "trajeto_aproximado": []
@@ -4251,7 +4251,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Penha de França",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.528387,
       "lng": -46.501927,
       "trajeto_aproximado": []
@@ -4264,7 +4264,7 @@ const BLOCOS_DATA = {
       "horario": "13:00",
       "horario_fim": "17:00",
       "concentracao": "Campo Limpo",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.649287,
       "lng": -46.758948,
       "trajeto_aproximado": []
@@ -4277,7 +4277,7 @@ const BLOCOS_DATA = {
       "horario": "13:00",
       "horario_fim": "17:00",
       "concentracao": "Campo Limpo",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.649287,
       "lng": -46.758948,
       "trajeto_aproximado": []
@@ -4290,7 +4290,7 @@ const BLOCOS_DATA = {
       "horario": "15:00",
       "horario_fim": "18:00",
       "concentracao": "Vila Oratório",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.656762,
       "lng": -46.455741,
       "trajeto_aproximado": []
@@ -4303,7 +4303,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Vila Mariana",
-      "tipo": "Tradicional",
+      "tipo": "Megabloco",
       "lat": -23.589178,
       "lng": -46.634668,
       "trajeto_aproximado": []
@@ -4316,7 +4316,7 @@ const BLOCOS_DATA = {
       "horario": "11:00",
       "horario_fim": "15:00",
       "concentracao": "República",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.544094,
       "lng": -46.642665,
       "trajeto_aproximado": []
@@ -4329,7 +4329,7 @@ const BLOCOS_DATA = {
       "horario": "16:00",
       "horario_fim": "18:00",
       "concentracao": "Vila Mascote",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.64637,
       "lng": -46.662562,
       "trajeto_aproximado": []
@@ -4342,7 +4342,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Jabaquara",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.646338,
       "lng": -46.641046,
       "trajeto_aproximado": []
@@ -4355,7 +4355,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Vila Salete",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.521402,
       "lng": -46.530442,
       "trajeto_aproximado": []
@@ -4368,7 +4368,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Moema",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.603607,
       "lng": -46.661881,
       "trajeto_aproximado": []
@@ -4381,7 +4381,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Ipiranga",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.594535,
       "lng": -46.602669,
       "trajeto_aproximado": []
@@ -4394,7 +4394,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Jardim São Joaquim",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.492557,
       "lng": -46.744964,
       "trajeto_aproximado": []
@@ -4407,7 +4407,7 @@ const BLOCOS_DATA = {
       "horario": "15:00",
       "horario_fim": "18:00",
       "concentracao": "Bela Vista",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.560122,
       "lng": -46.650034,
       "trajeto_aproximado": []
@@ -4420,7 +4420,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Vila Mariana",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.589178,
       "lng": -46.634668,
       "trajeto_aproximado": []
@@ -4433,7 +4433,7 @@ const BLOCOS_DATA = {
       "horario": "15:00",
       "horario_fim": "18:00",
       "concentracao": "Parque São Luís",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.674644,
       "lng": -46.747309,
       "trajeto_aproximado": []
@@ -4446,7 +4446,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Pinheiros",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.567215,
       "lng": -46.701952,
       "trajeto_aproximado": []
@@ -4459,7 +4459,7 @@ const BLOCOS_DATA = {
       "horario": "15:00",
       "horario_fim": "18:00",
       "concentracao": "Jardim Peri Peri",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.468259,
       "lng": -46.668152,
       "trajeto_aproximado": []
@@ -4472,7 +4472,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Vila Olímpia",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.593369,
       "lng": -46.692732,
       "trajeto_aproximado": []
@@ -4485,7 +4485,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Parque Santo Antônio",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.659139,
       "lng": -46.578449,
       "trajeto_aproximado": []
@@ -4498,7 +4498,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Vila Mariana",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.589178,
       "lng": -46.634668,
       "trajeto_aproximado": []
@@ -4511,7 +4511,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Pinheiros",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.567215,
       "lng": -46.701952,
       "trajeto_aproximado": []
@@ -4524,7 +4524,7 @@ const BLOCOS_DATA = {
       "horario": "13:00",
       "horario_fim": "17:00",
       "concentracao": "Pinheiros",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.567215,
       "lng": -46.701952,
       "trajeto_aproximado": []
@@ -4537,7 +4537,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Vila Gomes Cardim",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.547155,
       "lng": -46.5647,
       "trajeto_aproximado": []
@@ -4550,7 +4550,7 @@ const BLOCOS_DATA = {
       "horario": "15:00",
       "horario_fim": "18:00",
       "concentracao": "Jardim São Paulo",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.491014,
       "lng": -46.618798,
       "trajeto_aproximado": []
@@ -4563,7 +4563,7 @@ const BLOCOS_DATA = {
       "horario": "15:00",
       "horario_fim": "18:00",
       "concentracao": "Cidade Ademar",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.682323,
       "lng": -46.653311,
       "trajeto_aproximado": []
@@ -4576,7 +4576,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "17:00",
       "concentracao": "Vila Medeiros",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.488164,
       "lng": -46.582639,
       "trajeto_aproximado": []
@@ -4589,7 +4589,7 @@ const BLOCOS_DATA = {
       "horario": "16:00",
       "horario_fim": "18:00",
       "concentracao": "Vila Guilhermina",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.529305,
       "lng": -46.51664,
       "trajeto_aproximado": []
@@ -4602,7 +4602,7 @@ const BLOCOS_DATA = {
       "horario": "15:00",
       "horario_fim": "18:00",
       "concentracao": "Vila Madalena",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.546496,
       "lng": -46.691124,
       "trajeto_aproximado": []
@@ -4615,7 +4615,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Pinheiros",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.567215,
       "lng": -46.701952,
       "trajeto_aproximado": []
@@ -4628,7 +4628,7 @@ const BLOCOS_DATA = {
       "horario": "00:00",
       "horario_fim": "18:00",
       "concentracao": "Vila Santa Catarina",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.657065,
       "lng": -46.653427,
       "trajeto_aproximado": []
@@ -4641,7 +4641,7 @@ const BLOCOS_DATA = {
       "horario": "09:00",
       "horario_fim": "13:00",
       "concentracao": "Jardim Anália Franco",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.55374,
       "lng": -46.563413,
       "trajeto_aproximado": []
@@ -4654,7 +4654,7 @@ const BLOCOS_DATA = {
       "horario": "16:00",
       "horario_fim": "18:00",
       "concentracao": "Conjunto Residencial José Bonifácio",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.545036,
       "lng": -46.435785,
       "trajeto_aproximado": []
@@ -4667,7 +4667,7 @@ const BLOCOS_DATA = {
       "horario": "13:00",
       "horario_fim": "17:00",
       "concentracao": "Itaquera",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.542299,
       "lng": -46.471207,
       "trajeto_aproximado": []
@@ -4680,7 +4680,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Vila Esperança",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.529305,
       "lng": -46.51664,
       "trajeto_aproximado": []
@@ -4693,7 +4693,7 @@ const BLOCOS_DATA = {
       "horario": "15:00",
       "horario_fim": "18:00",
       "concentracao": "Pinheiros",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.567215,
       "lng": -46.701952,
       "trajeto_aproximado": []
@@ -4706,7 +4706,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Sacomã",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.611505,
       "lng": -46.596952,
       "trajeto_aproximado": []
@@ -4719,7 +4719,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "17:00",
       "concentracao": "Paraisópolis",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.61846,
       "lng": -46.723658,
       "trajeto_aproximado": []
@@ -4732,7 +4732,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "17:00",
       "concentracao": "Campo Limpo",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.649287,
       "lng": -46.758948,
       "trajeto_aproximado": []
@@ -4745,7 +4745,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Americanópolis",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.658321,
       "lng": -46.643497,
       "trajeto_aproximado": []
@@ -4758,7 +4758,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Butantã",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.5719,
       "lng": -46.70809,
       "trajeto_aproximado": []
@@ -4771,7 +4771,7 @@ const BLOCOS_DATA = {
       "horario": "14:00",
       "horario_fim": "18:00",
       "concentracao": "Consolação",
-      "tipo": "Tradicional",
+      "tipo": "Megabloco",
       "lat": -23.557818,
       "lng": -46.660537,
       "trajeto_aproximado": []
@@ -4797,7 +4797,7 @@ const BLOCOS_DATA = {
       "horario": "15:00",
       "horario_fim": "18:00",
       "concentracao": "Vila Indiana",
-      "tipo": "Tradicional",
+      "tipo": "Sem classificação",
       "lat": -23.568541,
       "lng": -46.731827,
       "trajeto_aproximado": []
@@ -4810,7 +4810,7 @@ const BLOCOS_DATA = {
       "horario": "10:00",
       "horario_fim": "14:00",
       "concentracao": "Vila Mariana",
-      "tipo": "Tradicional",
+      "tipo": "Megabloco",
       "lat": -23.589178,
       "lng": -46.634668,
       "trajeto_aproximado": []
